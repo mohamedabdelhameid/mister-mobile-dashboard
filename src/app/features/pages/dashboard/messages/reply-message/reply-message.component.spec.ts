@@ -1,0 +1,22 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { ReplyMessageComponent } from './reply-message.component';
+
+describe('ReplyMessageComponent', () => {
+  let component: ReplyMessageComponent;
+  let fixture: ComponentFixture<ReplyMessageComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [ReplyMessageComponent],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(ReplyMessageComponent);
+    component = fixture.componentInstance;
+    await fixture.whenStable();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

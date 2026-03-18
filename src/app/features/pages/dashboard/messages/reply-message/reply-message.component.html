@@ -1,0 +1,132 @@
+@if (flag) {
+  <div
+    class="fixed inset-0 z-50 flex items-center justify-center px-4 font-['Tajawal',sans-serif]"
+    style="background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(6px)"
+    (click)="close()"
+  >
+    <div
+      class="relative bg-[#0f0f0f] border border-white/8 rounded-2xl w-full max-w-md overflow-hidden"
+      style="
+        box-shadow:
+          0 0 60px rgba(212, 175, 55, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      "
+      (click)="$event.stopPropagation()"
+    >
+      <div
+        class="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-[#D4AF37]/30 rounded-tr-sm pointer-events-none"
+      ></div>
+      <div
+        class="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-[#D4AF37]/30 rounded-tl-sm pointer-events-none"
+      ></div>
+      <div
+        class="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-[#D4AF37]/30 rounded-br-sm pointer-events-none"
+      ></div>
+      <div
+        class="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-[#D4AF37]/30 rounded-bl-sm pointer-events-none"
+      ></div>
+
+      <div class="flex items-center justify-between px-6 pt-6 pb-4" dir="rtl">
+        <div>
+          <p class="text-[#D4AF37]/50 text-[10px] tracking-[0.3em] uppercase mb-1">
+            LUXA Dashboard
+          </p>
+          <h3 class="text-white font-black text-lg">
+            رد على <span class="text-[#D4AF37]">رسالة عميل</span>
+          </h3>
+        </div>
+        <button
+          type="button"
+          (click)="close()"
+          class="w-8 h-8 rounded-full flex items-center justify-center bg-white/5 text-white/30 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-all duration-200 cursor-pointer"
+        >
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+
+      <div
+        class="h-px mx-6"
+        style="
+          background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.15), transparent);
+        "
+      ></div>
+
+      <form
+        class="px-6 pt-5 pb-6 flex flex-col gap-4"
+        dir="rtl"
+        [formGroup]="replyMsgForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <div class="flex flex-col gap-1.5">
+          <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase"
+            >رسالة العميل</label
+          >
+          <textarea
+            rows="3"
+            placeholder="اكتب وصف المنتج هنا..."
+            [value]="message"
+            readonly
+            class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200 resize-none"
+          ></textarea>
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase">الرد</label>
+          <textarea
+            rows="3"
+            placeholder="اكتب ردك هنا..."
+            formControlName="reply_message"
+            class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200 resize-none"
+          ></textarea>
+          @if (replyMsgForm.get('reply_message')?.hasError('required')) {
+            <p class="text-red-500 text-xs">الرد مطلوب</p>
+          }
+          @if (replyMsgForm.get('reply_message')?.hasError('minlength')) {
+            <p class="text-red-500 text-xs">الرد يجب أن يكون 5 أحرف على الأقل</p>
+          }
+        </div>
+
+        <div
+          class="h-px"
+          style="
+            background: linear-gradient(
+              to right,
+              transparent,
+              rgba(212, 175, 55, 0.15),
+              transparent
+            );
+          "
+        ></div>
+
+        <div class="flex gap-3">
+          <button
+            type="button"
+            (click)="close()"
+            class="flex-1 py-3 rounded-xl text-sm font-semibold text-white/40 border border-white/8 hover:border-white/20 hover:text-white/60 transition-all duration-200 cursor-pointer bg-white/3"
+          >
+            إلغاء
+          </button>
+          <button
+            type="submit"
+            class="relative flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm overflow-hidden cursor-pointer group"
+            style="
+              background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 50%, #d4af37 100%);
+              color: #0a0a0a;
+            "
+          >
+            <span class="relative z-10 flex items-center gap-2">
+              <i
+                class="fa-solid fa-plus transition-transform duration-200 group-hover:rotate-90"
+              ></i>
+              رد على الرسالة
+            </span>
+            <div
+              class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              style="background: linear-gradient(135deg, #f0cc5c 0%, #d4af37 100%)"
+            ></div>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+}

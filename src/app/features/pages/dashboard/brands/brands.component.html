@@ -1,0 +1,123 @@
+<div class="min-h-screen bg-[#0a0a0a] text-white font-['Tajawal',sans-serif] p-8" dir="rtl">
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div
+      class="absolute top-[-10%] right-[10%] w-[500px] h-[500px] rounded-full"
+      style="background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 70%)"
+    ></div>
+  </div>
+
+  <div class="relative z-10 max-w-6xl mx-auto">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <p class="text-[#D4AF37]/50 text-[10px] tracking-[0.3em] uppercase mb-1">LUXA Dashboard</p>
+        <h1 class="text-3xl font-black text-white">
+          إدارة <span class="text-[#D4AF37]">الماركات</span>
+        </h1>
+      </div>
+      <button
+        (click)="router.navigate(['/dashboard/brands/add'])"
+        class="relative flex items-center gap-2 px-5 py-3 rounded-xl font-bold text-sm overflow-hidden cursor-pointer group"
+        style="
+          background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 50%, #d4af37 100%);
+          color: #0a0a0a;
+        "
+      >
+        <span class="relative z-10 flex items-center gap-2">
+          <i class="fa-solid fa-plus transition-transform duration-200 group-hover:rotate-90"></i>
+          إضافة ماركة
+        </span>
+        <div
+          class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          style="background: linear-gradient(135deg, #f0cc5c 0%, #d4af37 100%)"
+        ></div>
+      </button>
+    </div>
+
+    <div
+      class="h-px mb-8"
+      style="
+        background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.2), transparent);
+      "
+    ></div>
+
+    @if (brands() === null) {
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        @for (s of [1, 2, 3, 4, 5, 6, 7, 8]; track s) {
+          <div class="bg-white/3 border border-white/5 rounded-2xl p-5 animate-pulse">
+            <div class="w-14 h-14 rounded-xl bg-white/5 mx-auto mb-4"></div>
+            <div class="h-3 bg-white/5 rounded-full w-2/3 mx-auto mb-2"></div>
+            <div class="h-2 bg-white/5 rounded-full w-1/2 mx-auto"></div>
+          </div>
+        }
+      </div>
+    }
+
+    @if (brands()?.length === 0) {
+      <div class="flex flex-col items-center justify-center py-28 gap-4">
+        <div
+          class="w-20 h-20 rounded-2xl flex items-center justify-center"
+          style="background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.15)"
+        >
+          <i class="fa-solid fa-tag text-3xl text-[#D4AF37]/40"></i>
+        </div>
+        <p class="text-white/30 text-lg font-semibold">لا توجد ماركات بعد</p>
+        <button
+          (click)="router.navigate(['/dashboard/brands/add'])"
+          class="px-6 py-3 rounded-xl text-sm font-bold cursor-pointer"
+          style="background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 100%); color: #0a0a0a"
+        >
+          إضافة أول ماركة
+        </button>
+      </div>
+    }
+
+    @if (brands() && brands()!.length > 0) {
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        @for (brand of brands()!; track brand.id) {
+          <div
+            class="group relative bg-white/3 border border-white/5 rounded-2xl p-5 flex flex-col items-center text-center hover:border-[#D4AF37]/25 transition-all duration-300 overflow-hidden"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+            ></div>
+
+            <div
+              class="absolute top-3 left-3 flex gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
+            >
+              <button
+                (click)="router.navigate([`dashboard/brands/${brand.id}`])"
+                class="w-7 h-7 rounded-lg flex items-center justify-center bg-[#D4AF37]/15 text-[#D4AF37] hover:bg-[#D4AF37]/30 transition-colors duration-200 cursor-pointer"
+              >
+                <i class="fa-solid fa-pen text-xs"></i>
+              </button>
+              <button
+                (click)="deleteBrands(brand.id)"
+                class="w-7 h-7 rounded-lg flex items-center justify-center bg-red-500/10 text-red-400 hover:bg-red-500/20 transition-colors duration-200 cursor-pointer"
+              >
+                <i class="fa-solid fa-trash-can text-xs"></i>
+              </button>
+            </div>
+
+            <div
+              class="relative w-16 h-16 rounded-xl overflow-hidden bg-[#111] flex items-center justify-center mb-4 border border-white/5 group-hover:border-[#D4AF37]/20 transition-colors duration-300"
+            >
+              <img
+                [src]="'http://127.0.0.1:8000' + brand.image"
+                [alt]="brand.name"
+                class="w-full h-full object-contain p-2 transition-transform duration-300 group-hover:scale-110"
+              />
+            </div>
+
+            <h3
+              class="text-white font-bold text-sm group-hover:text-[#D4AF37] transition-colors duration-200"
+            >
+              {{ brand.name }}
+            </h3>
+
+            <p class="text-white/25 text-[10px] tracking-widest mt-1">{{ brand.slug }}</p>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>

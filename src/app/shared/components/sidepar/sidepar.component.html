@@ -1,0 +1,196 @@
+<aside
+  class="flex flex-col h-screen bg-[#0a0a0a] border-l border-white/5 w-[240px] relative font-['Tajawal',sans-serif]"
+  dir="rtl"
+>
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <div
+      class="absolute top-0 right-0 w-[300px] h-[300px] rounded-full"
+      style="background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%)"
+    ></div>
+  </div>
+
+  <div class="relative z-10 flex items-center gap-3 px-4 py-5 border-b border-white/5">
+    <div
+      class="w-10 h-10 rounded-xl flex items-center justify-center text-black font-black text-lg flex-shrink-0"
+      style="background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 100%)"
+    >
+      L
+    </div>
+    <div>
+      <p class="text-white font-black text-lg leading-none">LUXA</p>
+      <p class="text-[#D4AF37]/50 text-[10px] tracking-[0.25em] uppercase">Dashboard</p>
+    </div>
+  </div>
+
+  <nav
+    class="relative z-10 flex-1 overflow-y-auto py-3 px-2 flex flex-col gap-0.5"
+    style="scrollbar-width: none"
+  >
+    <p class="text-[#D4AF37]/30 text-[10px] tracking-[0.3em] uppercase px-3 pt-2 pb-2">الرئيسية</p>
+
+    <a
+      routerLink="/dashboard/home"
+      routerLinkActive="active-link"
+      class="sidebar-link relative flex items-center gap-3 px-3 py-2.5 rounded-xl cursor-pointer transition-all duration-200 group"
+    >
+      <div
+        class="sidebar-indicator absolute right-0 top-1/2 -translate-y-1/2 w-[3px] h-5 rounded-full opacity-0 transition-opacity duration-200"
+        style="background: #d4af37"
+      ></div>
+      <i
+        class="fa-solid fa-gauge text-base sidebar-icon text-white/25 transition-colors duration-200 group-hover:text-[#D4AF37]"
+      ></i>
+      <span
+        class="text-sm sidebar-label text-white/40 transition-colors duration-200 group-hover:text-white"
+        >لوحة التحكم</span
+      >
+    </a>
+
+    <a
+      routerLink="/dashboard/brands"
+      routerLinkActive="active-link"
+      class="sidebar-link relative flex items-center gap-3 px-3 py-2.5 rounded-xl cursor-pointer transition-all duration-200 group"
+    >
+      <div
+        class="sidebar-indicator absolute right-0 top-1/2 -translate-y-1/2 w-[3px] h-5 rounded-full opacity-0 transition-opacity duration-200"
+        style="background: #d4af37"
+      ></div>
+      <i
+        class="fa-solid fa-tag text-base text-white/25 transition-colors duration-200 group-hover:text-[#D4AF37]"
+      ></i>
+      <span class="text-sm text-white/40 transition-colors duration-200 group-hover:text-white"
+        >الماركات</span
+      >
+    </a>
+
+    <a
+      routerLink="/dashboard/colors"
+      routerLinkActive="active-link"
+      class="sidebar-link relative flex items-center gap-3 px-3 py-2.5 rounded-xl cursor-pointer transition-all duration-200 group"
+    >
+      <div
+        class="sidebar-indicator absolute right-0 top-1/2 -translate-y-1/2 w-[3px] h-5 rounded-full opacity-0 transition-opacity duration-200"
+        style="background: #d4af37"
+      ></div>
+      <i
+        class="fa-solid fa-palette text-base text-white/25 transition-colors duration-200 group-hover:text-[#D4AF37]"
+      ></i>
+      <span class="text-sm text-white/40 transition-colors duration-200 group-hover:text-white"
+        >الألوان</span
+      >
+    </a>
+
+    <p class="text-[#D4AF37]/30 text-[10px] tracking-[0.3em] uppercase px-3 pt-4 pb-2">المنتجات</p>
+
+    <a
+      routerLink="/dashboard/mobiles"
+      routerLinkActive="active-link"
+      class="sidebar-link relative flex items-center gap-3 px-3 py-2.5 rounded-xl cursor-pointer transition-all duration-200 group"
+    >
+      <div
+        class="sidebar-indicator absolute right-0 top-1/2 -translate-y-1/2 w-[3px] h-5 rounded-full opacity-0 transition-opacity duration-200"
+        style="background: #d4af37"
+      ></div>
+      <i
+        class="fa-solid fa-mobile-screen text-base text-white/25 transition-colors duration-200 group-hover:text-[#D4AF37]"
+      ></i>
+      <span class="text-sm text-white/40 transition-colors duration-200 group-hover:text-white"
+        >الموبايلات</span
+      >
+    </a>
+    <a
+      routerLink="/dashboard/mobiles/colors"
+      routerLinkActive="active-link"
+      class="sidebar-link relative flex items-center gap-3 px-3 py-2.5 rounded-xl cursor-pointer transition-all duration-200 group"
+    >
+      <div
+        class="sidebar-indicator absolute right-0 top-1/2 -translate-y-1/2 w-[3px] h-5 rounded-full opacity-0 transition-opacity duration-200"
+        style="background: #d4af37"
+      ></div>
+      <i
+        class="fa-solid fa-palette text-base text-white/25 transition-colors duration-200 group-hover:text-[#D4AF37]"
+      ></i>
+      <span class="text-sm text-white/40 transition-colors duration-200 group-hover:text-white"
+        >لون الموبايل</span
+      >
+    </a>
+
+    <p class="text-[#D4AF37]/30 text-[10px] tracking-[0.3em] uppercase px-3 pt-4 pb-2">الطلبات</p>
+
+    <a
+      routerLink="/dashboard/orders"
+      routerLinkActive="active-link"
+      class="sidebar-link relative flex items-center gap-3 px-3 py-2.5 rounded-xl cursor-pointer transition-all duration-200 group"
+    >
+      <div
+        class="sidebar-indicator absolute right-0 top-1/2 -translate-y-1/2 w-[3px] h-5 rounded-full opacity-0 transition-opacity duration-200"
+        style="background: #d4af37"
+      ></div>
+      <i
+        class="fa-solid fa-box text-base text-white/25 transition-colors duration-200 group-hover:text-[#D4AF37]"
+      ></i>
+      <span
+        class="text-sm text-white/40 transition-colors duration-200 group-hover:text-white flex-1"
+        >الطلبات</span
+      >
+      <span
+        class="text-[10px] font-black px-2 py-0.5 rounded-full text-black"
+        style="background: #d4af37"
+        >{{ ordersCount() }}</span
+      >
+    </a>
+
+    <a
+      routerLink="/dashboard/messages"
+      routerLinkActive="active-link"
+      class="sidebar-link relative flex items-center gap-3 px-3 py-2.5 rounded-xl cursor-pointer transition-all duration-200 group"
+    >
+      <div
+        class="sidebar-indicator absolute right-0 top-1/2 -translate-y-1/2 w-[3px] h-5 rounded-full opacity-0 transition-opacity duration-200"
+        style="background: #d4af37"
+      ></div>
+      <i
+        class="fa-solid fa-message text-base text-white/25 transition-colors duration-200 group-hover:text-[#D4AF37]"
+      ></i>
+      <span
+        class="text-sm text-white/40 transition-colors duration-200 group-hover:text-white flex-1"
+        >الرسائل</span
+      >
+      <span
+        class="text-[10px] font-black px-2 py-0.5 rounded-full text-black"
+        style="background: #d4af37"
+        >{{ messagesCount() }}</span
+      >
+    </a>
+  </nav>
+
+  <div
+    class="h-px mx-4"
+    style="
+      background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.15), transparent);
+    "
+  ></div>
+
+  <div class="relative z-10 p-3">
+    <div
+      class="flex items-center gap-3 px-2 py-2 rounded-xl hover:bg-white/3 transition-colors duration-200 cursor-pointer group"
+    >
+      <div
+        class="w-8 h-8 rounded-lg flex items-center justify-center text-black font-black text-sm flex-shrink-0"
+        style="background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 100%)"
+      >
+        A
+      </div>
+      <div class="flex-1 overflow-hidden">
+        <p class="text-white text-sm font-bold truncate">Admin</p>
+        <p class="text-white/30 text-xs truncate">admin&#64;luxastore.com</p>
+      </div>
+      <button
+        (click)="logOut()"
+        class="text-white/20 hover:text-red-400 transition-colors duration-200 cursor-pointer p-1"
+      >
+        <i class="fa-solid fa-arrow-right-from-bracket text-sm"></i>
+      </button>
+    </div>
+  </div>
+</aside>

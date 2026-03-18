@@ -1,0 +1,45 @@
+<div class="bg-[#0a0a0a] text-white font-['Tajawal',sans-serif] p-8" dir="rtl">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+    <div class="bg-white/3 border border-white/5 rounded-2xl p-6">
+      <p class="text-white font-bold text-sm mb-3">الموبايلات و البراندات</p>
+
+      <div class="flex gap-4 mb-4">
+        <span class="flex items-center gap-2 text-xs text-white/40">
+          <span class="w-2.5 h-2.5 rounded-sm inline-block" style="background: #d4af37"></span>
+          موبايلات
+        </span>
+
+        <span class="flex items-center gap-2 text-xs text-white/40">
+          <span class="w-2.5 h-2.5 rounded-sm inline-block" style="background: #444441"></span>
+          براندات
+        </span>
+      </div>
+
+      <div class="relative h-[200px]">
+        <canvas baseChart [data]="mobilesBrandsChart()" [options]="donutOptions" type="doughnut">
+        </canvas>
+      </div>
+    </div>
+
+    <div class="bg-white/3 border border-white/5 rounded-2xl p-6">
+      <p class="text-white font-bold text-sm mb-3">الأوردرات و المستخدمين</p>
+
+      <div class="flex gap-4 mb-4">
+        <span class="flex items-center gap-2 text-xs text-white/40">
+          <span class="w-2.5 h-2.5 rounded-sm inline-block" style="background: #d4af37"></span>
+          أوردرات
+        </span>
+
+        <span class="flex items-center gap-2 text-xs text-white/40">
+          <span class="w-2.5 h-2.5 rounded-sm inline-block" style="background: #444441"></span>
+          مستخدمين
+        </span>
+      </div>
+
+      <div class="relative h-[200px]">
+        <canvas baseChart [data]="ordersUsersChart()" [options]="donutOptions" type="doughnut">
+        </canvas>
+      </div>
+    </div>
+  </div>
+</div>

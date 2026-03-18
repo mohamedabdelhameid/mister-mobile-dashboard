@@ -1,0 +1,106 @@
+<div
+  class="min-h-screen bg-[#0a0a0a] text-white font-['Tajawal',sans-serif] flex items-center justify-center px-4"
+  dir="rtl"
+>
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div
+      class="absolute top-[-10%] right-[10%] w-[600px] h-[600px] rounded-full"
+      style="background: radial-gradient(circle, rgba(212, 175, 55, 0.07) 0%, transparent 70%)"
+    ></div>
+    <div
+      class="absolute bottom-[5%] left-[-5%] w-[400px] h-[400px] rounded-full"
+      style="background: radial-gradient(circle, rgba(212, 175, 55, 0.04) 0%, transparent 70%)"
+    ></div>
+  </div>
+
+  <div
+    class="fixed inset-0 opacity-[0.02] pointer-events-none"
+    style="
+      background-image:
+        linear-gradient(#d4af37 1px, transparent 1px),
+        linear-gradient(90deg, #d4af37 1px, transparent 1px);
+      background-size: 40px 40px;
+    "
+  ></div>
+
+  <div class="relative z-10 text-center max-w-lg mx-auto">
+    <div class="relative mb-6">
+      <p
+        class="text-[180px] font-black leading-none select-none"
+        style="
+          background: linear-gradient(
+            135deg,
+            rgba(212, 175, 55, 0.15) 0%,
+            rgba(212, 175, 55, 0.05) 100%
+          );
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        "
+      >
+        404
+      </p>
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="flex items-center gap-3">
+          <div
+            class="h-px w-16"
+            style="background: linear-gradient(to right, transparent, #d4af37)"
+          ></div>
+          <div
+            class="w-10 h-10 rounded-xl flex items-center justify-center"
+            style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.2)"
+          >
+            <i class="fa-solid fa-magnifying-glass text-[#D4AF37] text-sm"></i>
+          </div>
+          <div
+            class="h-px w-16"
+            style="background: linear-gradient(to left, transparent, #d4af37)"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="h-px mb-8 mx-8"
+      style="
+        background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.2), transparent);
+      "
+    ></div>
+
+    <h1 class="text-3xl font-black text-white mb-3">
+      الصفحة <span class="text-[#D4AF37]">غير موجودة</span>
+    </h1>
+    <p class="text-white/30 text-sm leading-relaxed mb-10">
+      الصفحة التي تبحث عنها غير موجودة أو تم نقلها أو حذفها.
+      <br />تأكد من الرابط أو ارجع للصفحة الرئيسية.
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+      <a
+        routerLink="/"
+        class="relative flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm overflow-hidden cursor-pointer group"
+        style="
+          background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 50%, #d4af37 100%);
+          color: #0a0a0a;
+        "
+      >
+        <span class="relative z-10 flex items-center gap-2">
+          <i class="fa-solid fa-house transition-transform duration-200 group-hover:scale-110"></i>
+          الصفحة الرئيسية
+        </span>
+        <div
+          class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          style="background: linear-gradient(135deg, #f0cc5c 0%, #d4af37 100%)"
+        ></div>
+      </a>
+
+      <button
+        onclick="history.back()"
+        class="flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white/40 border border-white/8 hover:border-[#D4AF37]/30 hover:text-white/60 transition-all duration-200 cursor-pointer bg-white/3"
+      >
+        <i class="fa-solid fa-arrow-right text-xs"></i>
+        الصفحة السابقة
+      </button>
+    </div>
+  </div>
+</div>

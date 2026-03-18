@@ -1,0 +1,307 @@
+<div class="min-h-screen bg-[#0a0a0a] text-white font-['Tajawal',sans-serif] py-12 px-4" dir="rtl">
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div
+      class="absolute top-[-10%] right-[10%] w-[600px] h-[600px] rounded-full"
+      style="background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 70%)"
+    ></div>
+  </div>
+
+  <div class="relative z-10 max-w-4xl mx-auto">
+    <div class="flex items-center gap-3 mb-4">
+      <div class="flex-1 h-px bg-gradient-to-l from-[#D4AF37]/30 to-transparent"></div>
+      <span class="text-xs tracking-[0.3em] uppercase text-[#D4AF37] opacity-60"
+        >LUXA Dashboard</span
+      >
+      <div class="flex-1 h-px bg-gradient-to-r from-[#D4AF37]/30 to-transparent"></div>
+    </div>
+
+    <div class="mb-8">
+      <h1 class="text-3xl font-black text-white mb-1">
+        إضافة <span class="text-[#D4AF37]">موبايل</span>
+      </h1>
+      <p class="text-white/30 text-sm">أضف موبايل جديد للمتجر</p>
+    </div>
+
+    <form [formGroup]="addMobileForm" (submit)="addMobile()" class="flex flex-col gap-6">
+      <div
+        class="relative bg-white/3 border border-white/5 rounded-2xl p-6"
+        style="box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04)"
+      >
+        <p class="text-[#D4AF37]/60 text-[10px] tracking-widest uppercase mb-4">صورة الغلاف</p>
+
+        <div
+          class="relative flex flex-col items-center justify-center gap-3 border-2 border-dashed border-white/10 rounded-2xl p-10 cursor-pointer hover:border-[#D4AF37]/40 transition-colors duration-200 group bg-white/2"
+        >
+          @if (file()) {
+            <div class="flex flex-col items-center gap-2">
+              <i class="fa-solid fa-file-image text-[#D4AF37] text-3xl"></i>
+              <p class="text-white/60 text-sm font-semibold">{{ file()?.name }}</p>
+              <p class="text-white/25 text-xs">{{ (file()!.size / 1024 / 1024).toFixed(2) }} MB</p>
+            </div>
+          } @else {
+            <div
+              class="w-14 h-14 rounded-xl flex items-center justify-center"
+              style="background: rgba(212, 175, 55, 0.1)"
+            >
+              <i
+                class="fa-solid fa-cloud-arrow-up text-[#D4AF37]/60 text-2xl group-hover:text-[#D4AF37] transition-colors duration-200"
+              ></i>
+            </div>
+            <div class="text-center">
+              <p class="text-white/50 text-sm font-semibold">اسحب الصورة هنا أو اضغط للاختيار</p>
+              <p class="text-white/20 text-xs mt-1">PNG, JPG — حجم أقصى 2MB</p>
+            </div>
+          }
+          <input
+            type="file"
+            accept="image/*"
+            (change)="selectImage($event)"
+            class="absolute inset-0 opacity-0 cursor-pointer"
+          />
+        </div>
+      </div>
+
+      <div class="relative bg-white/3 border border-white/5 rounded-2xl p-6">
+        <p class="text-[#D4AF37]/60 text-[10px] tracking-widest uppercase mb-5">
+          المعلومات الأساسية
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="sm:col-span-2 flex flex-col gap-1.5">
+            <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase"
+              >اسم الموبايل</label
+            >
+            <input
+              type="text"
+              formControlName="title"
+              placeholder="مثال: Samsung Galaxy S24"
+              class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200"
+            />
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase">الماركة</label>
+            <select
+              formControlName="brand_id"
+              class="bg-[#111] border border-white/10 rounded-xl px-4 py-3 text-sm text-white/70 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200 cursor-pointer appearance-none"
+            >
+              <option value="" disabled selected>اختر الماركة</option>
+              @for (brand of brands(); track brand.id) {
+                <option [value]="brand.id">{{ brand.name }}</option>
+              }
+            </select>
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase"
+              >رقم الموديل</label
+            >
+            <input
+              type="text"
+              formControlName="model_number"
+              placeholder="LUXA Store"
+              class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200"
+            />
+          </div>
+
+          <div class="sm:col-span-2 flex flex-col gap-1.5">
+            <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase">الوصف</label>
+            <textarea
+              formControlName="description"
+              rows="3"
+              placeholder="وصف الموبايل..."
+              class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200 resize-none"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative bg-white/3 border border-white/5 rounded-2xl p-6">
+        <p class="text-[#D4AF37]/60 text-[10px] tracking-widest uppercase mb-5">
+          المواصفات التقنية
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="flex flex-col gap-1.5">
+            <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase">المعالج</label>
+            <input
+              type="text"
+              formControlName="processor"
+              placeholder="مثال: Snapdragon 8 Gen 3"
+              class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200"
+            />
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase"
+              >الرام / التخزين</label
+            >
+            <input
+              type="text"
+              formControlName="storage"
+              placeholder="مثال: 8GB / 256GB"
+              class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200"
+            />
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase">الشاشة</label>
+            <input
+              type="text"
+              formControlName="display"
+              placeholder="مثال: 6.8 AMOLED 120Hz"
+              class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200"
+            />
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase"
+              >البطارية (mAh)</label
+            >
+            <input
+              type="text"
+              formControlName="battery"
+              placeholder="مثال: 5000"
+              class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200"
+            />
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase">الكاميرا</label>
+            <input
+              type="text"
+              formControlName="camera"
+              placeholder="مثال: 108MP + 12MP"
+              class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200"
+            />
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase"
+              >نظام التشغيل</label
+            >
+            <input
+              type="text"
+              formControlName="operating_system"
+              placeholder="مثال: Android 14"
+              class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200"
+            />
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase">الشبكة</label>
+            <select
+              formControlName="network_support"
+              class="bg-[#111] border border-white/10 rounded-xl px-4 py-3 text-sm text-white/70 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200 cursor-pointer appearance-none"
+            >
+              <option value="" disabled selected>اختر نوع الشبكة</option>
+              <option value="5G">5G</option>
+              <option value="4G">4G</option>
+              <option value="3G">3G</option>
+            </select>
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase"
+              >سنة الإصدار</label
+            >
+            <input
+              type="text"
+              formControlName="release_year"
+              placeholder="مثال: 2024"
+              class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="relative bg-white/3 border border-white/5 rounded-2xl p-6">
+        <p class="text-[#D4AF37]/60 text-[10px] tracking-widest uppercase mb-5">السعر والحالة</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="flex flex-col gap-1.5">
+            <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase"
+              >السعر (ج.م)</label
+            >
+            <div class="relative">
+              <input
+                type="number"
+                formControlName="price"
+                placeholder="0"
+                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200 pl-12"
+              />
+              <span
+                class="absolute left-3 top-1/2 -translate-y-1/2 text-[#D4AF37]/40 text-xs pointer-events-none"
+                >ج.م</span
+              >
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase">الخصم (%)</label>
+            <div class="relative">
+              <input
+                type="number"
+                formControlName="discount"
+                placeholder="0"
+                min="0"
+                max="100"
+                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200 pl-10"
+              />
+              <span
+                class="absolute left-3 top-1/2 -translate-y-1/2 text-[#D4AF37]/40 text-xs pointer-events-none"
+                >%</span
+              >
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase">الحالة</label>
+            <select
+              formControlName="status"
+              class="bg-[#111] border border-white/10 rounded-xl px-4 py-3 text-sm text-white/70 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200 cursor-pointer appearance-none"
+            >
+              <option value="" disabled selected>اختر الحالة</option>
+              <option value="available">متاح</option>
+              <option value="out_of_stock">غير متاح</option>
+              <option value="coming_soon">قريباً</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="h-px"
+        style="
+          background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.2), transparent);
+        "
+      ></div>
+
+      <div class="flex gap-3">
+        <a
+          routerLink="/dashboard/mobiles"
+          class="flex-1 flex items-center justify-center py-4 rounded-xl text-sm font-semibold text-white/40 border border-white/8 hover:border-white/20 hover:text-white/60 transition-all duration-200 cursor-pointer bg-white/3"
+        >
+          إلغاء
+        </a>
+        <button
+          type="submit"
+          [disabled]="addMobileForm.invalid"
+          class="relative flex-1 flex items-center justify-center gap-2 py-4 rounded-xl font-bold text-sm overflow-hidden cursor-pointer group disabled:opacity-40 disabled:cursor-not-allowed"
+          style="
+            background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 50%, #d4af37 100%);
+            color: #0a0a0a;
+          "
+        >
+          <span class="relative z-10 flex items-center gap-2">
+            <i
+              class="fa-solid fa-mobile-screen transition-transform duration-200 group-hover:scale-110"
+            ></i>
+            إضافة الموبايل
+          </span>
+          <div
+            class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            style="background: linear-gradient(135deg, #f0cc5c 0%, #d4af37 100%)"
+          ></div>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

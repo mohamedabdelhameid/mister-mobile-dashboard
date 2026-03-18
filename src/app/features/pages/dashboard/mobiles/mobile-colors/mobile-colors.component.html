@@ -1,0 +1,219 @@
+<div class="min-h-screen bg-[#0a0a0a] text-white font-['Tajawal',sans-serif] p-8" dir="rtl">
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div
+      class="absolute top-[-10%] right-[10%] w-[500px] h-[500px] rounded-full"
+      style="background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 70%)"
+    ></div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto">
+    <div class="mb-8">
+      <p class="text-[#D4AF37]/50 text-[10px] tracking-[0.3em] uppercase mb-1">LUXA Dashboard</p>
+      <h1 class="text-3xl font-black text-white">
+        ألوان <span class="text-[#D4AF37]">الموبايلات</span>
+      </h1>
+    </div>
+
+    <div
+      class="h-px mb-8"
+      style="
+        background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.2), transparent);
+      "
+    ></div>
+
+    @if (mobiles().length === null) {
+      <div class="flex flex-col gap-4">
+        @for (s of [1, 2, 3]; track s) {
+          <div class="bg-white/3 border border-white/5 rounded-2xl p-5 animate-pulse">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-14 h-14 rounded-xl bg-white/5"></div>
+              <div class="flex flex-col gap-2 flex-1">
+                <div class="h-4 bg-white/5 rounded-full w-1/4"></div>
+                <div class="h-3 bg-white/5 rounded-full w-1/6"></div>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              @for (c of [1, 2, 3]; track c) {
+                <div class="h-20 w-32 bg-white/5 rounded-xl"></div>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    }
+
+    @if (mobiles().length === 0) {
+      <div class="flex flex-col items-center justify-center py-28 gap-4">
+        <div
+          class="w-20 h-20 rounded-2xl flex items-center justify-center"
+          style="background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.15)"
+        >
+          <i class="fa-solid fa-tag text-3xl text-[#D4AF37]/40"></i>
+        </div>
+        <p class="text-white/30 text-lg font-semibold">لا توجد الوان للموبايلات بعد</p>
+        <button
+          (click)="router.navigate(['/dashboard/mobiles/colors/add'])"
+          class="px-6 py-3 rounded-xl text-sm font-bold cursor-pointer"
+          style="background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 100%); color: #0a0a0a"
+        >
+          إضافة أول لون موبايل
+        </button>
+      </div>
+    }
+
+    @if (mobiles().length > 0) {
+      <div class="flex flex-col gap-5">
+        @for (mobile of mobiles(); track mobile.id) {
+          <div
+            class="bg-white/3 border border-white/5 rounded-2xl overflow-hidden hover:border-[#D4AF37]/15 transition-colors duration-200"
+          >
+            <div class="flex items-center gap-4 px-5 py-4 border-b border-white/5">
+              <div
+                class="w-12 h-12 rounded-xl bg-[#111] border border-white/8 flex items-center justify-center overflow-hidden flex-shrink-0"
+              >
+                <img
+                  [src]="'http://127.0.0.1:8000' + mobile.image_cover"
+                  [alt]="mobile.title"
+                  class="w-full h-full object-contain p-1"
+                />
+              </div>
+              <div class="flex-1 min-w-0">
+                <h3 class="text-white font-bold text-sm truncate">{{ mobile.title }}</h3>
+                <div class="flex items-center gap-3 mt-0.5">
+                  <p class="text-[#D4AF37]/50 text-xs">{{ mobile.brand.name }}</p>
+                  <span class="text-white/10">•</span>
+                  <p class="text-white/30 text-xs">{{ mobile.colors.length }} لون</p>
+                </div>
+              </div>
+
+              <button
+                (click)="router.navigate(['/dashboard/mobiles/colors/add'])"
+                class="relative flex items-center gap-2 px-4 py-2 rounded-xl font-bold text-xs overflow-hidden cursor-pointer group flex-shrink-0"
+                style="
+                  background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 50%, #d4af37 100%);
+                  color: #0a0a0a;
+                "
+              >
+                <span class="relative z-10 flex items-center gap-1.5">
+                  <i
+                    class="fa-solid fa-plus transition-transform duration-200 group-hover:rotate-90"
+                  ></i>
+                  إضافة لون
+                </span>
+                <div
+                  class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style="background: linear-gradient(135deg, #f0cc5c 0%, #d4af37 100%)"
+                ></div>
+              </button>
+            </div>
+
+            <div class="p-5">
+              @if (mobile.colors.length === 0) {
+                <div
+                  class="flex items-center gap-3 py-4 px-3 bg-white/2 border border-dashed border-white/8 rounded-xl"
+                >
+                  <i class="fa-solid fa-palette text-white/20 text-lg"></i>
+                  <p class="text-white/25 text-sm">لا توجد ألوان — اضغط "إضافة لون"</p>
+                </div>
+              } @else {
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+                  @for (colorItem of mobile.colors; track colorItem.id) {
+                    <div
+                      class="group/c relative bg-white/3 border border-white/5 rounded-xl p-3 hover:border-[#D4AF37]/20 transition-all duration-200 overflow-hidden"
+                    >
+                      <div
+                        class="absolute top-2 left-2 flex gap-1 opacity-0 group-hover/c:opacity-100 transition-opacity duration-200 z-10"
+                      >
+                        <button
+                          (click)="
+                            router.navigate(['/dashboard/mobiles/colors/update', colorItem.id])
+                          "
+                          class="w-6 h-6 rounded-lg flex items-center justify-center bg-[#D4AF37]/20 text-[#D4AF37] hover:bg-[#D4AF37]/35 transition-colors duration-200 cursor-pointer"
+                        >
+                          <i class="fa-solid fa-pen text-[10px]"></i>
+                        </button>
+                        <button
+                          (click)="deleteMobileColorAndStock(colorItem.id)"
+                          class="w-6 h-6 rounded-lg flex items-center justify-center bg-red-500/10 text-red-400 hover:bg-red-500/20 transition-colors duration-200 cursor-pointer"
+                        >
+                          <i class="fa-solid fa-trash-can text-[10px]"></i>
+                        </button>
+                      </div>
+
+                      <div class="flex items-center gap-3 mb-3">
+                        <div
+                          class="w-8 h-8 rounded-full border-2 border-white/10 flex-shrink-0"
+                          [style.background]="colorItem.color.hex_code"
+                        ></div>
+                        <div class="min-w-0">
+                          <p class="text-white text-xs font-bold truncate">
+                            {{ colorItem.color.name }}
+                          </p>
+                          <p class="text-white/25 text-[10px] font-mono">
+                            {{ colorItem.color.hex_code }}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-1 text-white/30 text-[10px]">
+                          <i class="fa-regular fa-image text-[10px]"></i>
+                          <span>{{ colorItem.images.length }} صورة</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                          <span
+                            class="w-1.5 h-1.5 rounded-full"
+                            [style.background]="colorItem.is_available ? '#D4AF37' : '#555'"
+                          >
+                          </span>
+                          <span
+                            class="text-[10px]"
+                            [style.color]="colorItem.is_available ? '#D4AF37' : '#555'"
+                          >
+                            {{ colorItem.stock_quantity }}
+                          </span>
+                        </div>
+                      </div>
+
+                      @if (colorItem.images.length > 0) {
+                        <div class="flex gap-1 mt-3 overflow-x-hidden">
+                          @for (img of colorItem.images.slice(0, 3); track img.id) {
+                            <div
+                              class="w-10 h-10 rounded-lg overflow-hidden bg-[#111] flex-shrink-0"
+                            >
+                              <img
+                                [src]="'http://127.0.0.1:8000' + img.image"
+                                class="w-full h-full object-cover"
+                              />
+                            </div>
+                          }
+                          @if (colorItem.images.length > 3) {
+                            <div
+                              class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0"
+                            >
+                              <span class="text-white/40 text-[10px] font-bold"
+                                >+{{ colorItem.images.length - 3 }}</span
+                              >
+                            </div>
+                          }
+                        </div>
+                      }
+
+                      <button
+                        (click)="router.navigate(['/dashboard/mobiles/images/', colorItem.id])"
+                        class="w-full flex items-center justify-center gap-1.5 mt-3 py-1.5 rounded-lg border border-dashed border-white/10 text-white/25 text-[10px] hover:border-[#D4AF37]/30 hover:text-[#D4AF37]/60 transition-all duration-200 cursor-pointer"
+                      >
+                        <i class="fa-solid fa-plus text-[10px]"></i>
+                        إضافة صور
+                      </button>
+                    </div>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>

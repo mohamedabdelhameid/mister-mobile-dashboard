@@ -1,0 +1,177 @@
+<div
+  class="min-h-screen bg-[#0a0a0a] text-white font-['Tajawal',sans-serif] flex items-center justify-center py-16 px-4"
+  dir="rtl"
+>
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div
+      class="absolute top-[-10%] right-[10%] w-[600px] h-[600px] rounded-full"
+      style="background: radial-gradient(circle, rgba(212, 175, 55, 0.07) 0%, transparent 70%)"
+    ></div>
+  </div>
+
+  <div class="relative z-10 w-full max-w-md">
+    <div class="flex items-center gap-3 mb-4">
+      <div class="flex-1 h-px bg-gradient-to-l from-[#D4AF37]/30 to-transparent"></div>
+      <span class="text-xs tracking-[0.3em] uppercase text-[#D4AF37] opacity-60"
+        >LUXA Dashboard</span
+      >
+      <div class="flex-1 h-px bg-gradient-to-r from-[#D4AF37]/30 to-transparent"></div>
+    </div>
+
+    <div class="mb-8">
+      <h1 class="text-3xl font-black text-white mb-1">
+        تعديل <span class="text-[#D4AF37]">لون</span>
+      </h1>
+      <p class="text-white/30 text-sm">تعديل بيانات اللون الحالي</p>
+    </div>
+
+    <div
+      class="relative bg-white/3 border border-white/5 rounded-2xl p-8"
+      style="
+        box-shadow:
+          0 0 60px rgba(212, 175, 55, 0.05),
+          inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      "
+    >
+      <div
+        class="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#D4AF37]/25 rounded-tr-sm pointer-events-none"
+      ></div>
+      <div
+        class="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#D4AF37]/25 rounded-tl-sm pointer-events-none"
+      ></div>
+      <div
+        class="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-[#D4AF37]/25 rounded-br-sm pointer-events-none"
+      ></div>
+      <div
+        class="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-[#D4AF37]/25 rounded-bl-sm pointer-events-none"
+      ></div>
+
+      <form [formGroup]="updateColorForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-6">
+        @if (color()) {
+          <div class="flex items-center gap-4 bg-white/3 border border-white/8 rounded-xl p-4">
+            <div
+              class="w-12 h-12 rounded-full border-2 border-white/10 flex-shrink-0"
+              [style.background]="color()?.hex_code"
+            ></div>
+            <div class="flex-1">
+              <p class="text-white text-sm font-bold">{{ color()?.name }}</p>
+              <p class="text-white/30 text-xs font-mono mt-0.5">{{ color()?.hex_code }}</p>
+            </div>
+            <span
+              class="text-[10px] text-[#D4AF37] tracking-widest border border-[#D4AF37]/30 px-2 py-1 rounded-lg"
+              >حالي</span
+            >
+          </div>
+        }
+
+        <div class="flex items-center justify-center">
+          <div class="relative">
+            <div
+              class="w-20 h-20 rounded-full border-4 border-white/10 transition-all duration-300 shadow-lg"
+              [style.background]="
+                updateColorForm.get('hex_code')?.value || color()?.hex_code || '#1a1a1a'
+              "
+            ></div>
+            <div
+              class="absolute inset-2 rounded-full opacity-20"
+              style="border: 1px solid rgba(255, 255, 255, 0.5)"
+            ></div>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase">اسم اللون</label>
+          <input
+            type="text"
+            formControlName="name"
+            placeholder="مثال: أحمر غامق"
+            value="{{ color()?.name }}"
+            class="bg-white/5 border rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none transition-colors duration-200"
+            [ngClass]="
+              updateColorForm.get('name')?.invalid && updateColorForm.get('name')?.touched
+                ? 'border-red-500/50 focus:border-red-500/70'
+                : 'border-white/10 focus:border-[#D4AF37]/50'
+            "
+          />
+          @if (updateColorForm.get('name')?.invalid && updateColorForm.get('name')?.touched) {
+            <p class="text-red-400 text-xs flex items-center gap-1">
+              <i class="fa-solid fa-circle-exclamation text-xs"></i>
+              اسم اللون مطلوب
+            </p>
+          }
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase"
+            >كود اللون (Hex)</label
+          >
+          <div class="flex gap-3 items-center">
+            <div class="relative flex-shrink-0">
+              <div
+                class="w-12 h-12 rounded-xl border border-white/10 overflow-hidden cursor-pointer transition-all duration-200 hover:border-[#D4AF37]/40"
+                [style.background]="updateColorForm.get('hex_code')?.value || color()?.hex_code"
+              >
+                <input
+                  type="color"
+                  (input)="updateColorForm.get('hex_code')?.setValue($any($event.target).value)"
+                  class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                />
+              </div>
+            </div>
+
+            <input
+              type="text"
+              formControlName="hex_code"
+              placeholder="#FF0000"
+              class="flex-1 bg-white/5 border rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none transition-colors duration-200 font-mono"
+              [ngClass]="
+                updateColorForm.get('hex_code')?.invalid && updateColorForm.get('hex_code')?.touched
+                  ? 'border-red-500/50 focus:border-red-500/70'
+                  : 'border-white/10 focus:border-[#D4AF37]/50'
+              "
+            />
+          </div>
+          @if (
+            updateColorForm.get('hex_code')?.invalid && updateColorForm.get('hex_code')?.touched
+          ) {
+            <p class="text-red-400 text-xs flex items-center gap-1">
+              <i class="fa-solid fa-circle-exclamation text-xs"></i>
+              كود اللون مطلوب
+            </p>
+          }
+        </div>
+
+        <div class="h-px bg-gradient-to-r from-transparent via-[#D4AF37]/15 to-transparent"></div>
+
+        <div class="flex gap-3">
+          <a
+            routerLink="/dashboard/colors"
+            class="flex-1 flex items-center justify-center py-3 rounded-xl text-sm font-semibold text-white/40 border border-white/8 hover:border-white/20 hover:text-white/60 transition-all duration-200 cursor-pointer bg-white/3"
+          >
+            إلغاء
+          </a>
+          <button
+            type="submit"
+            [disabled]="updateColorForm.invalid"
+            class="relative flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm overflow-hidden cursor-pointer group disabled:opacity-40 disabled:cursor-not-allowed"
+            style="
+              background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 50%, #d4af37 100%);
+              color: #0a0a0a;
+            "
+          >
+            <span class="relative z-10 flex items-center gap-2">
+              <i
+                class="fa-solid fa-floppy-disk transition-transform duration-200 group-hover:scale-110"
+              ></i>
+              حفظ التعديلات
+            </span>
+            <div
+              class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              style="background: linear-gradient(135deg, #f0cc5c 0%, #d4af37 100%)"
+            ></div>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

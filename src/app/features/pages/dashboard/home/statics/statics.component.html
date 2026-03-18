@@ -1,0 +1,193 @@
+<div class="bg-[#0a0a0a] text-white font-['Tajawal',sans-serif] p-8" dir="rtl">
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div
+      class="absolute top-[-10%] right-[10%] w-[500px] h-[500px] rounded-full"
+      style="background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 70%)"
+    ></div>
+  </div>
+
+  <div class="relative z-10 max-w-6xl mx-auto">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <p class="text-[#D4AF37]/50 text-[10px] tracking-[0.3em] uppercase mb-1">LUXA Store</p>
+        <h1 class="text-3xl font-black text-white">
+          لوحة <span class="text-[#D4AF37]">التحكم</span>
+        </h1>
+      </div>
+      <div class="flex items-center gap-2 bg-white/3 border border-white/8 rounded-xl px-4 py-2">
+        <span class="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse"></span>
+        <span class="text-white/40 text-xs">مباشر</span>
+      </div>
+    </div>
+
+    <div
+      class="h-px mb-8"
+      style="
+        background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.2), transparent);
+      "
+    ></div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+      <div
+        class="relative bg-white/3 border border-white/5 rounded-2xl p-5 hover:border-[#D4AF37]/20 transition-all duration-300 group overflow-hidden"
+      >
+        <div
+          class="absolute top-3 left-3 w-4 h-4 border-t border-l border-[#D4AF37]/20 rounded-tl-sm group-hover:border-[#D4AF37]/50 transition-colors duration-300"
+        ></div>
+        <div
+          class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-[#D4AF37]/20 rounded-br-sm group-hover:border-[#D4AF37]/50 transition-colors duration-300"
+        ></div>
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+        ></div>
+        <div class="flex items-start justify-between mb-4">
+          <div
+            class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+            style="background: rgba(212, 175, 55, 0.1)"
+          >
+            <i class="fa-solid fa-mobile-screen text-[#D4AF37] text-base"></i>
+          </div>
+          <span class="text-[10px] text-[#D4AF37]/40 tracking-widest uppercase">الموبايلات</span>
+        </div>
+        <p class="text-4xl font-black text-white mb-1">{{ stats()?.mobiles_count ?? 0 }}</p>
+        <p class="text-white/30 text-xs">إجمالي الموبايلات المتاحة</p>
+      </div>
+
+      <div
+        class="relative bg-white/3 border border-white/5 rounded-2xl p-5 hover:border-[#D4AF37]/20 transition-all duration-300 group overflow-hidden"
+      >
+        <div
+          class="absolute top-3 left-3 w-4 h-4 border-t border-l border-[#D4AF37]/20 rounded-tl-sm group-hover:border-[#D4AF37]/50 transition-colors duration-300"
+        ></div>
+        <div
+          class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-[#D4AF37]/20 rounded-br-sm group-hover:border-[#D4AF37]/50 transition-colors duration-300"
+        ></div>
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+        ></div>
+        <div class="flex items-start justify-between mb-4">
+          <div
+            class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+            style="background: rgba(212, 175, 55, 0.1)"
+          >
+            <i class="fa-solid fa-tag text-[#D4AF37] text-base"></i>
+          </div>
+          <span class="text-[10px] text-[#D4AF37]/40 tracking-widest uppercase">الماركات</span>
+        </div>
+        <p class="text-4xl font-black text-white mb-1">{{ stats()?.brands_count ?? 0 }}</p>
+        <p class="text-white/30 text-xs">إجمالي الماركات المسجلة</p>
+      </div>
+
+      <div
+        class="relative bg-white/3 border border-white/5 rounded-2xl p-5 hover:border-[#D4AF37]/20 transition-all duration-300 group overflow-hidden"
+      >
+        <div
+          class="absolute top-3 left-3 w-4 h-4 border-t border-l border-[#D4AF37]/20 rounded-tl-sm group-hover:border-[#D4AF37]/50 transition-colors duration-300"
+        ></div>
+        <div
+          class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-[#D4AF37]/20 rounded-br-sm group-hover:border-[#D4AF37]/50 transition-colors duration-300"
+        ></div>
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+        ></div>
+        <div class="flex items-start justify-between mb-4">
+          <div
+            class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+            style="background: rgba(212, 175, 55, 0.1)"
+          >
+            <i class="fa-solid fa-envelope text-[#D4AF37] text-base"></i>
+          </div>
+          <span class="text-[10px] text-[#D4AF37]/40 tracking-widest uppercase">التواصل</span>
+        </div>
+        <p class="text-4xl font-black text-white mb-1">{{ stats()?.contact_data ?? 0 }}</p>
+        <p class="text-white/30 text-xs">رسائل التواصل الواردة</p>
+      </div>
+
+      <div
+        class="relative bg-white/3 border border-white/5 rounded-2xl p-5 hover:border-[#D4AF37]/20 transition-all duration-300 group overflow-hidden"
+      >
+        <div
+          class="absolute top-3 left-3 w-4 h-4 border-t border-l border-[#D4AF37]/20 rounded-tl-sm group-hover:border-[#D4AF37]/50 transition-colors duration-300"
+        ></div>
+        <div
+          class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-[#D4AF37]/20 rounded-br-sm group-hover:border-[#D4AF37]/50 transition-colors duration-300"
+        ></div>
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+        ></div>
+        <div class="flex items-start justify-between mb-4">
+          <div
+            class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+            style="background: rgba(212, 175, 55, 0.1)"
+          >
+            <i class="fa-solid fa-users text-[#D4AF37] text-base"></i>
+          </div>
+          <span class="text-[10px] text-[#D4AF37]/40 tracking-widest uppercase">العملاء</span>
+        </div>
+        <p class="text-4xl font-black text-white mb-1">{{ stats()?.users_count ?? 0 }}</p>
+        <p class="text-white/30 text-xs">إجمالي المستخدمين المسجلين</p>
+      </div>
+
+      <div
+        class="relative bg-white/3 border border-white/5 rounded-2xl p-5 hover:border-[#D4AF37]/20 transition-all duration-300 group overflow-hidden"
+      >
+        <div
+          class="absolute top-3 left-3 w-4 h-4 border-t border-l border-[#D4AF37]/20 rounded-tl-sm group-hover:border-[#D4AF37]/50 transition-colors duration-300"
+        ></div>
+        <div
+          class="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-[#D4AF37]/20 rounded-br-sm group-hover:border-[#D4AF37]/50 transition-colors duration-300"
+        ></div>
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+        ></div>
+        <div class="flex items-start justify-between mb-4">
+          <div
+            class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+            style="background: rgba(212, 175, 55, 0.1)"
+          >
+            <i class="fa-solid fa-box text-[#D4AF37] text-base"></i>
+          </div>
+          <span class="text-[10px] text-[#D4AF37]/40 tracking-widest uppercase">الطلبات</span>
+        </div>
+        <p class="text-4xl font-black text-white mb-1">{{ stats()?.orders ?? 0 }}</p>
+        <p class="text-white/30 text-xs">إجمالي الطلبات المؤكدة</p>
+
+        @if ((stats()?.orders ?? 0) === 0) {
+          <div class="flex items-center gap-1.5 mt-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-white/20"></span>
+            <span class="text-white/20 text-[10px]">لا توجد طلبات بعد</span>
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="mt-8">
+      <p class="text-[#D4AF37]/40 text-[10px] tracking-[0.3em] uppercase mb-4">وصول سريع</p>
+      <div class="flex flex-wrap gap-3">
+        @for (
+          link of [
+            { label: 'إضافة موبايل', icon: 'fa-plus', route: '/dashboard/mobiles/add' },
+            { label: 'عرض الطلبات', icon: 'fa-box', route: '/dashboard/orders' },
+            { label: 'إدارة الماركات', icon: 'fa-tag', route: '/dashboard/brands' },
+            { label: 'رسائل التواصل', icon: 'fa-envelope', route: '/dashboard/messages' },
+          ];
+          track link.label
+        ) {
+          <a
+            [routerLink]="link.route"
+            class="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/8 bg-white/3 text-white/40 text-sm hover:border-[#D4AF37]/30 hover:text-white transition-all duration-200 cursor-pointer group"
+          >
+            <i
+              class="fa-solid {{
+                link.icon
+              }} text-[#D4AF37]/50 group-hover:text-[#D4AF37] transition-colors duration-200 text-xs"
+            ></i>
+            {{ link.label }}
+          </a>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-charts></app-charts>

@@ -1,0 +1,14 @@
+.sidebar-link:hover,
+.sidebar-link.active-link {
+  background: rgba(212, 175, 55, 0.07);
+}
+.sidebar-link.active-link .sidebar-indicator {
+  opacity: 1;
+}
+.sidebar-link.active-link i,
+.sidebar-link.active-link .sidebar-icon {
+  color: #d4af37 !important;
+}
+.sidebar-link.active-link span {
+  color: #ffffff !important;
+}
