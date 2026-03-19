@@ -47,7 +47,6 @@ export class UpdateOrderComponent {
         next: (res) => {
           this.toastr.success('تم تعديل الطلب بنجاح', 'نجحت');
           this.updateOrderStatus.reset();
-          // this.rouetr.navigate(['/dashboard/orders']);
           location.href = '/dashboard/orders';
         },
         error: (err) => {

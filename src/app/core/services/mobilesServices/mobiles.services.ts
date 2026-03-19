@@ -65,8 +65,4 @@ export class MobilesServices {
       data,
     );
   }
-
-  // deleteImageColorMobile(id : string):Observable<any>{
-  //   return this.httpClint.delete<any>(ApiLink.apiLink + 'mobile-images/' + id);
-  // }
 }
