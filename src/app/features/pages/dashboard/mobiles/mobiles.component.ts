@@ -1,12 +1,13 @@
-import { Component, inject, signal, WritableSignal } from '@angular/core';
+import { Component, computed, inject, signal, WritableSignal } from '@angular/core';
 import { MobilesServices } from '../../../../core/services/mobilesServices/mobiles.services';
 import { Router } from '@angular/router';
 import { ToastUtilService } from '../../../../core/services/toastrServices/toastr.services';
 import { IMobile } from '../../../../core/interfaces/mobilesInterfaces/imobile.interfaces';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-mobiles',
-  imports: [],
+  imports: [NgClass],
   templateUrl: './mobiles.component.html',
   styleUrl: './mobiles.component.css',
 })
@@ -15,10 +16,19 @@ export class MobilesComponent {
   private readonly toastr = inject(ToastUtilService);
   readonly router = inject(Router);
   mobiles: WritableSignal<IMobile[]> = signal([]);
+  searchQuery = signal('');
 
   ngOnInit(): void {
     this.getAllMobiles();
   }
+
+  filteredMobiles = computed(() => {
+    const q = this.searchQuery().trim().toLowerCase();
+    if (!q) return this.mobiles();
+    return this.mobiles().filter(
+      (m) => m.title.toLowerCase().includes(q) || m.brand.name.toLowerCase().includes(q),
+    );
+  });
 
   getAllMobiles(): void {
     this.mobilesServices.getAllMobiles().subscribe({
