@@ -11,16 +11,16 @@
 
   <div class="relative z-10 w-full max-w-lg">
     <div class="flex items-center gap-3 mb-4">
-      <div class="flex-1 h-px bg-gradient-to-l from-[#D4AF37]/30 to-transparent"></div>
-      <span class="text-xs tracking-[0.3em] uppercase text-[#D4AF37] opacity-60"
-        >LUXA Dashboard</span
+      <div class="flex-1 h-px bg-gradient-to-l from-[#82c04f]/30 to-transparent"></div>
+      <span class="text-xs tracking-[0.3em] uppercase text-[#82c04f] opacity-60"
+        >Mister Mobile Dashboard</span
       >
-      <div class="flex-1 h-px bg-gradient-to-r from-[#D4AF37]/30 to-transparent"></div>
+      <div class="flex-1 h-px bg-gradient-to-r from-[#82c04f]/30 to-transparent"></div>
     </div>
 
     <div class="mb-8">
       <h1 class="text-3xl font-black text-white mb-1">
-        إضافة <span class="text-[#D4AF37]">صور اللون</span>
+        إضافة <span class="text-[#82c04f]">صور اللون</span>
       </h1>
       <p class="text-white/30 text-sm">رفع صور للون المحدد</p>
     </div>
@@ -34,16 +34,16 @@
       "
     >
       <div
-        class="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#D4AF37]/25 rounded-tr-sm pointer-events-none"
+        class="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#82c04f]/25 rounded-tr-sm pointer-events-none"
       ></div>
       <div
-        class="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#D4AF37]/25 rounded-tl-sm pointer-events-none"
+        class="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#82c04f]/25 rounded-tl-sm pointer-events-none"
       ></div>
       <div
-        class="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-[#D4AF37]/25 rounded-br-sm pointer-events-none"
+        class="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-[#82c04f]/25 rounded-br-sm pointer-events-none"
       ></div>
       <div
-        class="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-[#D4AF37]/25 rounded-bl-sm pointer-events-none"
+        class="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-[#82c04f]/25 rounded-bl-sm pointer-events-none"
       ></div>
 
       <form
@@ -56,7 +56,7 @@
             class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
             style="background: rgba(212, 175, 55, 0.1)"
           >
-            <i class="fa-solid fa-palette text-[#D4AF37] text-sm"></i>
+            <i class="fa-solid fa-palette text-[#82c04f] text-sm"></i>
           </div>
           <div class="flex-1 min-w-0">
             <p class="text-white/40 text-[10px] tracking-widest uppercase mb-0.5">معرف اللون</p>
@@ -65,7 +65,7 @@
         </div>
 
         <div class="flex flex-col gap-2">
-          <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase">
+          <label class="text-[10px] text-[#82c04f]/60 tracking-widest uppercase">
             الصور
             <span class="normal-case text-white/20 tracking-normal mr-2"
               >يمكن رفع أكثر من صورة</span
@@ -73,8 +73,8 @@
           </label>
 
           <div
-            class="relative flex flex-col items-center justify-center gap-3 border-2 border-dashed border-white/10 rounded-2xl p-8 cursor-pointer hover:border-[#D4AF37]/40 transition-colors duration-200 group bg-white/2"
-            [class.border-[#D4AF37]/30]="file() && file()!.length > 0"
+            class="relative flex flex-col items-center justify-center gap-3 border-2 border-dashed border-white/10 rounded-2xl p-8 cursor-pointer hover:border-[#82c04f]/40 transition-colors duration-200 group bg-white/2"
+            [class.border-[#82c04f]/30]="file() && file()!.length > 0"
           >
             @if (!file() || file()!.length === 0) {
               <div
@@ -82,7 +82,7 @@
                 style="background: rgba(212, 175, 55, 0.1)"
               >
                 <i
-                  class="fa-solid fa-images text-[#D4AF37]/60 text-2xl group-hover:text-[#D4AF37] transition-colors duration-200"
+                  class="fa-solid fa-images text-[#82c04f]/60 text-2xl group-hover:text-[#82c04f] transition-colors duration-200"
                 ></i>
               </div>
               <div class="text-center">
@@ -92,10 +92,10 @@
             } @else {
               <div class="flex flex-col items-center gap-2">
                 <div
-                  class="flex items-center gap-2 bg-[#D4AF37]/10 border border-[#D4AF37]/20 rounded-xl px-4 py-2"
+                  class="flex items-center gap-2 bg-[#82c04f]/10 border border-[#82c04f]/20 rounded-xl px-4 py-2"
                 >
-                  <i class="fa-solid fa-check text-[#D4AF37] text-sm"></i>
-                  <span class="text-[#D4AF37] font-bold text-sm"
+                  <i class="fa-solid fa-check text-[#82c04f] text-sm"></i>
+                  <span class="text-[#82c04f] font-bold text-sm"
                     >{{ file()!.length }} صورة مختارة</span
                   >
                 </div>
@@ -127,7 +127,7 @@
           }
         </div>
 
-        <div class="h-px bg-gradient-to-r from-transparent via-[#D4AF37]/15 to-transparent"></div>
+        <div class="h-px bg-gradient-to-r from-transparent via-[#82c04f]/15 to-transparent"></div>
 
         <div class="flex gap-3">
           <a
@@ -141,7 +141,7 @@
             [disabled]="!file() || file()!.length === 0"
             class="relative flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm overflow-hidden cursor-pointer group disabled:opacity-40 disabled:cursor-not-allowed"
             style="
-              background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 50%, #d4af37 100%);
+              background: linear-gradient(135deg, #82c04f 0%, #8ed256 50%, #82c04f 100%);
               color: #0a0a0a;
             "
           >
@@ -153,7 +153,7 @@
             </span>
             <div
               class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              style="background: linear-gradient(135deg, #f0cc5c 0%, #d4af37 100%)"
+              style="background: linear-gradient(135deg, #8ed256 0%, #82c04f 100%)"
             ></div>
           </button>
         </div>

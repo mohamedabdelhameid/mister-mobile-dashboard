@@ -40,7 +40,7 @@ export class AddMobileComponent {
     this.addMobileForm = this.fb.group({
       title: ['', Validators.required],
       brand_id: ['', Validators.required],
-      model_number: ['LUXA Store', Validators.required], // ديما luxa store
+      model_number: ['Mister Mobile Store', Validators.required], // ديما Mister Mobile store
       description: ['', Validators.required],
       battery: ['', Validators.required],
       processor: ['', Validators.required],
@@ -83,6 +83,11 @@ export class AddMobileComponent {
     data.append('status', this.addMobileForm.get('status')?.value || '');
     data.append('image_cover', this.file() || ({} as File));
 
+    if (!this.file()) {
+      this.toastr.error('يرجى اختيار صورة', 'فشل');
+      return;
+    }
+
     this.authSubscription?.unsubscribe();
 
     this.authSubscription = this.mobilesServices.addMobile(data).subscribe({
@@ -92,11 +97,23 @@ export class AddMobileComponent {
         this.file.set(null);
       },
       error: (err) => {
-        this.toastr.error(
-          'فشلت إضافة الموبايل يرجى المحاولة مرة اخرى مع التأكد من حجم الصورة',
-          'فشل',
-        );
+        if (err.error.message.includes('The title has already been taken.')) {
+          this.toastr.error('هذا الموبايل موجود ب الفعل', 'فشل');
+        } else {
+          this.toastr.error(
+            'فشلت إضافة الموبايل يرجى المحاولة مرة اخرى مع التأكد من حجم الصورة',
+            'فشل',
+          );
+        }
       },
     });
+  }
+
+  onSubmit() {
+    if (this.addMobileForm.invalid) {
+      this.addMobileForm.markAllAsTouched();
+    } else {
+      this.addMobile();
+    }
   }
 }

@@ -14,31 +14,31 @@
       (click)="$event.stopPropagation()"
     >
       <div
-        class="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-[#D4AF37]/30 rounded-tr-sm pointer-events-none"
+        class="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-[#82c04f]/30 rounded-tr-sm pointer-events-none"
       ></div>
       <div
-        class="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-[#D4AF37]/30 rounded-tl-sm pointer-events-none"
+        class="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-[#82c04f]/30 rounded-tl-sm pointer-events-none"
       ></div>
       <div
-        class="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-[#D4AF37]/30 rounded-br-sm pointer-events-none"
+        class="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-[#82c04f]/30 rounded-br-sm pointer-events-none"
       ></div>
       <div
-        class="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-[#D4AF37]/30 rounded-bl-sm pointer-events-none"
+        class="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-[#82c04f]/30 rounded-bl-sm pointer-events-none"
       ></div>
 
       <div class="flex items-center justify-between px-6 pt-6 pb-4" dir="rtl">
         <div>
-          <p class="text-[#D4AF37]/50 text-[10px] tracking-[0.3em] uppercase mb-1">
-            LUXA Dashboard
+          <p class="text-[#82c04f]/50 text-[10px] tracking-[0.3em] uppercase mb-1">
+            Mister Mobile Dashboard
           </p>
           <h3 class="text-white font-black text-lg">
-            رد على <span class="text-[#D4AF37]">رسالة عميل</span>
+            رد على <span class="text-[#82c04f]">رسالة عميل</span>
           </h3>
         </div>
         <button
           type="button"
           (click)="close()"
-          class="w-8 h-8 rounded-full flex items-center justify-center bg-white/5 text-white/30 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-all duration-200 cursor-pointer"
+          class="w-8 h-8 rounded-full flex items-center justify-center bg-white/5 text-white/30 hover:text-[#82c04f] hover:bg-[#82c04f]/10 transition-all duration-200 cursor-pointer"
         >
           <i class="fa-solid fa-xmark text-sm"></i>
         </button>
@@ -58,7 +58,7 @@
         (ngSubmit)="onSubmit()"
       >
         <div class="flex flex-col gap-1.5">
-          <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase"
+          <label class="text-[10px] text-[#82c04f]/60 tracking-widest uppercase"
             >رسالة العميل</label
           >
           <textarea
@@ -66,17 +66,17 @@
             placeholder="اكتب وصف المنتج هنا..."
             [value]="message"
             readonly
-            class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200 resize-none"
+            class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#82c04f]/50 transition-colors duration-200 resize-none"
           ></textarea>
         </div>
 
         <div class="flex flex-col gap-1.5">
-          <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase">الرد</label>
+          <label class="text-[10px] text-[#82c04f]/60 tracking-widest uppercase">الرد</label>
           <textarea
             rows="3"
             placeholder="اكتب ردك هنا..."
             formControlName="reply_message"
-            class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200 resize-none"
+            class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#82c04f]/50 transition-colors duration-200 resize-none"
           ></textarea>
           @if (replyMsgForm.get('reply_message')?.hasError('required')) {
             <p class="text-red-500 text-xs">الرد مطلوب</p>
@@ -110,7 +110,7 @@
             type="submit"
             class="relative flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm overflow-hidden cursor-pointer group"
             style="
-              background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 50%, #d4af37 100%);
+              background: linear-gradient(135deg, #82c04f 0%, #8ed256 50%, #82c04f 100%);
               color: #0a0a0a;
             "
           >
@@ -122,7 +122,7 @@
             </span>
             <div
               class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              style="background: linear-gradient(135deg, #f0cc5c 0%, #d4af37 100%)"
+              style="background: linear-gradient(135deg, #8ed256 0%, #82c04f 100%)"
             ></div>
           </button>
         </div>

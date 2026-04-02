@@ -32,7 +32,7 @@ export class ChartsComponent {
     datasets: [
       {
         data: [this.stats()?.['mobiles_count'] ?? 0, this.stats()?.['brands_count'] ?? 0],
-        backgroundColor: ['#D4AF37', '#444441'],
+        backgroundColor: ['#82c04f', '#444441'],
         borderWidth: 0,
       },
     ],
@@ -42,8 +42,8 @@ export class ChartsComponent {
     labels: ['Orders', 'Users'],
     datasets: [
       {
-        data: [this.stats()?.['orders_count'] ?? 0, this.stats()?.['users_count'] ?? 0],
-        backgroundColor: ['#D4AF37', '#444441'],
+        data: [this.stats()?.['orders'] ?? 0, this.stats()?.['users_count'] ?? 0],
+        backgroundColor: ['#82c04f', '#444441'],
         borderWidth: 0,
       },
     ],

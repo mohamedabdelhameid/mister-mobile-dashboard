@@ -46,7 +46,7 @@ export class UpdateMobileComponent {
     this.updateMobileForm = this.fb.group({
       title: [this.mobile()?.title, Validators.required],
       brand_id: [this.mobile()?.brand?.id, Validators.required],
-      model_number: ['LUXA Store', Validators.required], // ديما luxa store
+      model_number: ['Mister Mobile Store', Validators.required], // ديما Mister Mobile store
       description: [this.mobile()?.description, Validators.required],
       battery: [this.mobile()?.battery, Validators.required],
       processor: [this.mobile()?.processor, Validators.required],

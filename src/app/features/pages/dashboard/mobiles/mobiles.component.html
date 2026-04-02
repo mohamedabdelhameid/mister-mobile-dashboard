@@ -1,227 +1,3 @@
-<!-- <div class="min-h-screen bg-[#0a0a0a] text-white font-['Tajawal',sans-serif] p-8" dir="rtl">
-  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-    <div
-      class="absolute top-[-10%] right-[10%] w-[500px] h-[500px] rounded-full"
-      style="background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 70%)"
-    ></div>
-  </div>
-
-  <div class="relative z-10 max-w-7xl mx-auto">
-    <div class="flex items-center justify-between mb-8">
-      <div>
-        <p class="text-[#D4AF37]/50 text-[10px] tracking-[0.3em] uppercase mb-1">LUXA Dashboard</p>
-        <h1 class="text-3xl font-black text-white">
-          إدارة <span class="text-[#D4AF37]">الموبايلات</span>
-        </h1>
-      </div>
-      <button
-        (click)="router.navigate(['/dashboard/mobiles/add'])"
-        class="relative flex items-center gap-2 px-5 py-3 rounded-xl font-bold text-sm overflow-hidden cursor-pointer group"
-        style="
-          background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 50%, #d4af37 100%);
-          color: #0a0a0a;
-        "
-      >
-        <span class="relative z-10 flex items-center gap-2">
-          <i class="fa-solid fa-plus transition-transform duration-200 group-hover:rotate-90"></i>
-          إضافة موبايل
-        </span>
-        <div
-          class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          style="background: linear-gradient(135deg, #f0cc5c 0%, #d4af37 100%)"
-        ></div>
-      </button>
-    </div>
-
-    <div
-      class="h-px mb-8"
-      style="
-        background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.2), transparent);
-      "
-    ></div>
-
-    @if (mobiles().length === null) {
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        @for (s of [1, 2, 3, 4, 5, 6, 7, 8]; track s) {
-          <div class="bg-white/3 border border-white/5 rounded-2xl overflow-hidden animate-pulse">
-            <div class="h-44 bg-white/5"></div>
-            <div class="p-4 flex flex-col gap-3">
-              <div class="h-3 bg-white/5 rounded-full w-1/3"></div>
-              <div class="h-4 bg-white/5 rounded-full w-3/4"></div>
-              <div class="h-3 bg-white/5 rounded-full w-1/2"></div>
-              <div class="flex justify-between mt-1">
-                <div class="h-5 bg-white/5 rounded-full w-1/4"></div>
-                <div class="h-8 bg-white/5 rounded-xl w-1/3"></div>
-              </div>
-            </div>
-          </div>
-        }
-      </div>
-    }
-
-    @if (mobiles().length === 0) {
-      <div class="flex flex-col items-center justify-center py-28 gap-4">
-        <div
-          class="w-20 h-20 rounded-2xl flex items-center justify-center"
-          style="background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.15)"
-        >
-          <i class="fa-solid fa-tag text-3xl text-[#D4AF37]/40"></i>
-        </div>
-        <p class="text-white/30 text-lg font-semibold">لا توجد موبايلات بعد</p>
-        <button
-          (click)="router.navigate(['/dashboard/mobiles/add'])"
-          class="px-6 py-3 rounded-xl text-sm font-bold cursor-pointer"
-          style="background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 100%); color: #0a0a0a"
-        >
-          إضافة أول موبايل
-        </button>
-      </div>
-    }
-
-    @if (mobiles().length > 0) {
-      <div class="flex items-center gap-3 mb-5">
-        <span class="text-[#D4AF37] font-black text-xl">{{ mobiles().length }}</span>
-        <span class="text-white/30 text-sm">موبايل مسجل</span>
-        <div class="flex-1 h-px bg-gradient-to-r from-[#D4AF37]/15 to-transparent"></div>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        @for (mobile of mobiles(); track mobile.id) {
-          <div
-            class="group relative bg-white/3 border border-white/5 rounded-2xl overflow-hidden flex flex-col hover:border-[#D4AF37]/25 transition-all duration-300"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0"
-            ></div>
-
-            <div
-              class="absolute top-3 left-3 flex gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-20"
-            >
-              <button
-                (click)="router.navigate(['/dashboard/mobiles/update', mobile.id])"
-                class="w-8 h-8 rounded-lg flex items-center justify-center bg-[#D4AF37]/20 text-[#D4AF37] hover:bg-[#D4AF37]/35 transition-colors duration-200 cursor-pointer"
-              >
-                <i class="fa-solid fa-pen text-xs"></i>
-              </button>
-              <button
-                (click)="deleteMobile(mobile.id)"
-                class="w-8 h-8 rounded-lg flex items-center justify-center bg-red-500/10 text-red-400 hover:bg-red-500/20 transition-colors duration-200 cursor-pointer"
-              >
-                <i class="fa-solid fa-trash-can text-xs"></i>
-              </button>
-            </div>
-
-            <div class="absolute top-3 right-3 flex flex-col gap-1.5 z-20">
-              @if (mobile.discount > 0) {
-                <span
-                  class="text-[10px] font-black px-2 py-0.5 rounded-full text-black"
-                  style="background: #d4af37"
-                >
-                  -{{ mobile.discount }}%
-                </span>
-              }
-              <div
-                class="flex items-center gap-1 bg-black/40 backdrop-blur-sm rounded-full px-2 py-0.5"
-              >
-                <span class="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-pulse"></span>
-                <span class="text-[#D4AF37] text-[9px]">{{
-                  mobile.total_quantity > 0 ? 'متوفر' : 'غير متوفر'
-                }}</span>
-              </div>
-            </div>
-
-            <div
-              class="relative bg-[#111] h-44 flex items-center justify-center overflow-hidden z-10"
-            >
-              <img
-                [src]="'http://127.0.0.1:8000' + mobile.image_cover"
-                [alt]="mobile.title"
-                class="h-36 w-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
-              />
-            </div>
-
-            <div
-              class="h-px"
-              style="
-                background: linear-gradient(
-                  to right,
-                  transparent,
-                  rgba(212, 175, 55, 0.1),
-                  transparent
-                );
-              "
-            ></div>
-
-            <div class="relative z-10 p-4 flex flex-col gap-2 flex-1">
-              <div class="flex items-center gap-2">
-                <img
-                  [src]="'http://127.0.0.1:8000' + mobile.brand.image"
-                  [alt]="mobile.brand.name"
-                  class="w-4 h-4 object-contain rounded"
-                />
-                <p class="text-[#D4AF37]/50 text-[10px] tracking-widest uppercase">
-                  {{ mobile.brand.name }}
-                </p>
-              </div>
-
-              <h3
-                class="text-white font-bold text-sm leading-snug line-clamp-1 group-hover:text-[#D4AF37] transition-colors duration-200"
-              >
-                {{ mobile.title }}
-              </h3>
-
-              <div class="flex items-center gap-2 flex-wrap">
-                <span class="text-white/25 text-[10px] bg-white/5 rounded-lg px-2 py-0.5">{{
-                  mobile.storage
-                }}</span>
-                <span class="text-white/25 text-[10px] bg-white/5 rounded-lg px-2 py-0.5">{{
-                  mobile.network_support
-                }}</span>
-                <span class="text-white/25 text-[10px] bg-white/5 rounded-lg px-2 py-0.5">{{
-                  mobile.release_year
-                }}</span>
-              </div>
-
-              @if (mobile.colors.length > 0) {
-                <div class="flex items-center gap-1.5">
-                  @for (c of mobile.colors.slice(0, 5); track c.id) {
-                    <div
-                      class="w-4 h-4 rounded-full border border-white/15"
-                      [style.background]="c.color.hex_code"
-                      [title]="c.color.name"
-                    ></div>
-                  }
-                  @if (mobile.colors.length > 5) {
-                    <span class="text-white/25 text-[10px]">+{{ mobile.colors.length - 5 }}</span>
-                  }
-                </div>
-              }
-
-              <div class="flex items-center justify-between mt-auto pt-1">
-                <div class="flex flex-col">
-                  @if (mobile.discount > 0) {
-                    <span class="text-white/25 text-xs line-through">{{ mobile.price }} ج.م</span>
-                  }
-                  <div class="flex items-baseline gap-1">
-                    <span class="text-[#D4AF37] font-black text-base">{{
-                      mobile.final_price
-                    }}</span>
-                    <span class="text-[#D4AF37]/50 text-xs">ج.م</span>
-                  </div>
-                </div>
-                <div class="flex items-center gap-1 text-white/30 text-xs">
-                  <i class="fa-solid fa-box text-[10px]"></i>
-                  <span>{{ mobile.total_quantity }}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        }
-      </div>
-    }
-  </div>
-</div> -->
-
 <div class="min-h-screen bg-[#0a0a0a] text-white font-['Tajawal',sans-serif] p-8" dir="rtl">
   <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
     <div
@@ -234,16 +10,18 @@
     <!-- Header -->
     <div class="flex items-center justify-between mb-8">
       <div>
-        <p class="text-[#D4AF37]/50 text-[10px] tracking-[0.3em] uppercase mb-1">LUXA Dashboard</p>
+        <p class="text-[#82c04f]/50 text-[10px] tracking-[0.3em] uppercase mb-1">
+          Mister Mobile Dashboard
+        </p>
         <h1 class="text-3xl font-black text-white">
-          إدارة <span class="text-[#D4AF37]">الموبايلات</span>
+          إدارة <span class="text-[#82c04f]">الموبايلات</span>
         </h1>
       </div>
       <button
         (click)="router.navigate(['/dashboard/mobiles/add'])"
         class="relative flex items-center gap-2 px-5 py-3 rounded-xl font-bold text-sm overflow-hidden cursor-pointer group"
         style="
-          background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 50%, #d4af37 100%);
+          background: linear-gradient(135deg, #82c04f 0%, #8ed256 50%, #82c04f 100%);
           color: #0a0a0a;
         "
       >
@@ -253,7 +31,7 @@
         </span>
         <div
           class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          style="background: linear-gradient(135deg, #f0cc5c 0%, #d4af37 100%)"
+          style="background: linear-gradient(135deg, #8ed256 0%, #82c04f 100%)"
         ></div>
       </button>
     </div>
@@ -265,12 +43,11 @@
       "
     ></div>
 
-    <!-- Search Bar -->
     <div class="mb-6">
       <div
-        class="flex items-center bg-white/3 border border-white/10 rounded-2xl px-5 py-3.5 gap-3 focus-within:border-[#D4AF37]/50 transition-colors duration-200"
+        class="flex items-center bg-white/3 border border-white/10 rounded-2xl px-5 py-3.5 gap-3 focus-within:border-[#82c04f]/50 transition-colors duration-200"
       >
-        <i class="fa-solid fa-magnifying-glass text-[#D4AF37]/60 text-base flex-shrink-0"></i>
+        <i class="fa-solid fa-magnifying-glass text-[#82c04f]/60 text-base flex-shrink-0"></i>
         <input
           type="text"
           [value]="searchQuery()"
@@ -281,7 +58,7 @@
         @if (searchQuery()) {
           <button
             (click)="searchQuery.set('')"
-            class="w-6 h-6 rounded-full flex items-center justify-center bg-white/8 text-white/30 hover:text-[#D4AF37] transition-colors duration-200 cursor-pointer"
+            class="w-6 h-6 rounded-full flex items-center justify-center bg-white/8 text-white/30 hover:text-[#82c04f] transition-colors duration-200 cursor-pointer"
           >
             <i class="fa-solid fa-xmark text-xs"></i>
           </button>
@@ -289,7 +66,7 @@
       </div>
       @if (searchQuery()) {
         <p class="text-white/25 text-xs mt-2 px-1">
-          {{ filteredMobiles().length }} نتيجة لـ "<span class="text-[#D4AF37]/60">{{
+          {{ filteredMobiles().length }} نتيجة لـ "<span class="text-[#82c04f]/60">{{
             searchQuery()
           }}</span
           >"
@@ -297,8 +74,7 @@
       }
     </div>
 
-    <!-- Loading Skeleton -->
-    @if (mobiles().length === 0 && !searchQuery()) {
+    @if (mobiles().length === 0 && !searchQuery() && isLoading()) {
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         @for (s of [1, 2, 3, 4, 5, 6, 7, 8]; track s) {
           <div class="bg-white/3 border border-white/5 rounded-2xl overflow-hidden animate-pulse">
@@ -313,55 +89,52 @@
       </div>
     }
 
-    <!-- Empty Search -->
-    @if (searchQuery() && filteredMobiles().length === 0) {
+    @if (searchQuery() && filteredMobiles().length === 0 && !isLoading()) {
       <div class="flex flex-col items-center justify-center py-20 gap-3">
         <div
           class="w-16 h-16 rounded-2xl flex items-center justify-center"
           style="background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.15)"
         >
-          <i class="fa-solid fa-magnifying-glass text-2xl text-[#D4AF37]/40"></i>
+          <i class="fa-solid fa-magnifying-glass text-2xl text-[#82c04f]/40"></i>
         </div>
         <p class="text-white/30 font-semibold">لا توجد نتائج</p>
         <p class="text-white/20 text-sm">جرّب اسم مختلف أو اسم ماركة</p>
       </div>
     }
 
-    <!-- Empty State -->
-    @if (mobiles().length === 0 && !searchQuery()) {
+    @if (mobiles().length === 0 && !searchQuery() && !isLoading()) {
       <div class="flex flex-col items-center justify-center py-28 gap-4">
         <div
           class="w-20 h-20 rounded-2xl flex items-center justify-center"
           style="background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.15)"
         >
-          <i class="fa-solid fa-mobile-screen text-3xl text-[#D4AF37]/40"></i>
+          <i class="fa-solid fa-mobile-screen text-3xl text-[#82c04f]/40"></i>
         </div>
         <p class="text-white/30 text-lg font-semibold">لا توجد موبايلات بعد</p>
         <button
           (click)="router.navigate(['/dashboard/mobiles/add'])"
           class="px-6 py-3 rounded-xl text-sm font-bold cursor-pointer"
-          style="background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 100%); color: #0a0a0a"
+          style="background: linear-gradient(135deg, #82c04f 0%, #8ed256 100%); color: #0a0a0a"
         >
           إضافة أول موبايل
         </button>
       </div>
     }
 
-    <!-- Mobiles Grid -->
     @if (filteredMobiles().length > 0) {
       <div class="flex items-center gap-3 mb-5">
-        <span class="text-[#D4AF37] font-black text-xl">{{ filteredMobiles().length }}</span>
+        <span class="text-[#82c04f] font-black text-xl">{{ filteredMobiles().length }}</span>
         <span class="text-white/30 text-sm">موبايل</span>
-        <div class="flex-1 h-px bg-gradient-to-r from-[#D4AF37]/15 to-transparent"></div>
+        <div class="flex-1 h-px bg-gradient-to-r from-[#82c04f]/15 to-transparent"></div>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         @for (mobile of filteredMobiles(); track mobile.id) {
           <div
-            class="group relative bg-white/3 border border-white/5 rounded-2xl overflow-hidden flex flex-col hover:border-[#D4AF37]/25 transition-all duration-300"
+            class="group relative bg-white/3 border border-white/5 rounded-2xl overflow-hidden flex flex-col hover:border-[#82c04f]/25 transition-all duration-300"
           >
             <div
-              class="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0"
+              class="absolute inset-0 bg-gradient-to-br from-[#82c04f]/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0"
             ></div>
 
             <!-- Edit/Delete -->
@@ -370,7 +143,7 @@
             >
               <button
                 (click)="router.navigate(['/dashboard/mobiles/update', mobile.id])"
-                class="w-8 h-8 rounded-lg flex items-center justify-center bg-[#D4AF37]/20 text-[#D4AF37] hover:bg-[#D4AF37]/35 transition-colors duration-200 cursor-pointer"
+                class="w-8 h-8 rounded-lg flex items-center justify-center bg-[#82c04f]/20 text-[#82c04f] hover:bg-[#82c04f]/35 transition-colors duration-200 cursor-pointer"
               >
                 <i class="fa-solid fa-pen text-xs"></i>
               </button>
@@ -387,7 +160,7 @@
               @if (mobile.discount > 0) {
                 <span
                   class="text-[10px] font-black px-2 py-0.5 rounded-full text-black"
-                  style="background: #d4af37"
+                  style="background: #82c04f"
                 >
                   -{{ mobile.discount }}%
                 </span>
@@ -397,11 +170,11 @@
               >
                 <span
                   class="w-1.5 h-1.5 rounded-full animate-pulse"
-                  [ngClass]="mobile.total_quantity > 0 ? 'bg-[#D4AF37]' : 'bg-red-400'"
+                  [ngClass]="mobile.total_quantity > 0 ? 'bg-[#82c04f]' : 'bg-red-400'"
                 ></span>
                 <span
                   class="text-[9px]"
-                  [ngClass]="mobile.total_quantity > 0 ? 'text-[#D4AF37]' : 'text-red-400'"
+                  [ngClass]="mobile.total_quantity > 0 ? 'text-[#82c04f]' : 'text-red-400'"
                 >
                   {{ mobile.total_quantity > 0 ? 'متوفر' : 'غير متوفر' }}
                 </span>
@@ -439,12 +212,12 @@
                   [alt]="mobile.brand.name"
                   class="w-4 h-4 object-contain rounded"
                 />
-                <p class="text-[#D4AF37]/50 text-[10px] tracking-widest uppercase">
+                <p class="text-[#82c04f]/50 text-[10px] tracking-widest uppercase">
                   {{ mobile.brand.name }}
                 </p>
               </div>
               <h3
-                class="text-white font-bold text-sm leading-snug line-clamp-1 group-hover:text-[#D4AF37] transition-colors duration-200"
+                class="text-white font-bold text-sm leading-snug line-clamp-1 group-hover:text-[#82c04f] transition-colors duration-200"
               >
                 {{ mobile.title }}
               </h3>
@@ -479,10 +252,10 @@
                     <span class="text-white/25 text-xs line-through">{{ mobile.price }} ج.م</span>
                   }
                   <div class="flex items-baseline gap-1">
-                    <span class="text-[#D4AF37] font-black text-base">{{
+                    <span class="text-[#82c04f] font-black text-base">{{
                       mobile.final_price
                     }}</span>
-                    <span class="text-[#D4AF37]/50 text-xs">ج.م</span>
+                    <span class="text-[#82c04f]/50 text-xs">ج.م</span>
                   </div>
                 </div>
                 <div class="flex items-center gap-1 text-white/30 text-xs">

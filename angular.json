@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "luxa-dashboard": {
+    "mistermobile-dashboard": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -71,10 +71,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "luxa-dashboard:build:production"
+              "buildTarget": "mistermobile-dashboard:build:production"
             },
             "development": {
-              "buildTarget": "luxa-dashboard:build:development"
+              "buildTarget": "mistermobile-dashboard:build:development"
             }
           },
           "defaultConfiguration": "development"

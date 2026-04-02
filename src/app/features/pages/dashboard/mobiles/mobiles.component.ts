@@ -17,6 +17,7 @@ export class MobilesComponent {
   readonly router = inject(Router);
   mobiles: WritableSignal<IMobile[]> = signal([]);
   searchQuery = signal('');
+  isLoading = signal(false);
 
   ngOnInit(): void {
     this.getAllMobiles();
@@ -31,12 +32,15 @@ export class MobilesComponent {
   });
 
   getAllMobiles(): void {
+    this.isLoading.set(true);
     this.mobilesServices.getAllMobiles().subscribe({
       next: (res) => {
         this.mobiles.set(res.data);
+        this.isLoading.set(false);
       },
       error: (err) => {
         this.toastr.error('فشلت عملية جلب الموبايلات', 'فشل');
+        this.isLoading.set(false);
       },
     });
   }

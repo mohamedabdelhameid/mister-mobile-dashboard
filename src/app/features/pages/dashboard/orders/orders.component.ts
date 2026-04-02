@@ -18,6 +18,7 @@ export class OrdersComponent {
   private readonly toastr = inject(ToastUtilService);
   readonly router = inject(Router);
   ApiLink = ApiLink;
+  isLoading = signal(false);
 
   orders: WritableSignal<IOrders[]> = signal([]);
   searchQuery = signal('');
@@ -27,17 +28,22 @@ export class OrdersComponent {
   }
 
   getAllOrders() {
+    this.isLoading.set(true);
     this.ordersServices.getAllOrders().subscribe({
       next: (res) => {
+        this.isLoading.set(false);
         this.orders.set(res.data);
         this.ordersServices.ordersCount.set(res.data.length);
       },
-      error: () => this.toastr.error('فشل جلب الطلبات اعد المحاولة لاحقا', 'فشل'),
+      error: () => {
+        this.isLoading.set(false);
+        this.toastr.error('فشل جلب الطلبات اعد المحاولة لاحقا', 'فشل');
+      },
     });
   }
 
   filteredOrders = computed(() => {
-    const q = this.searchQuery().trim().toLowerCase(); // ← reactive ✅
+    const q = this.searchQuery().trim().toLowerCase();
     if (!q) return this.orders();
     return this.orders().filter(
       (order) =>

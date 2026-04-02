@@ -48,6 +48,11 @@ export class AddBrandComponent {
     data.append('name', this.addBrandForm.get('name')?.value || '');
     data.append('image', this.file() || ({} as File));
 
+    if (!this.file()) {
+      this.toastr.error('يرجى اختيار صورة', 'فشل');
+      return;
+    }
+
     this.authSubscription?.unsubscribe();
 
     this.authSubscription = this.brandsServices.addBrand(data).subscribe({
@@ -57,10 +62,14 @@ export class AddBrandComponent {
         this.file.set(null);
       },
       error: (err) => {
-        this.toastr.error(
-          'فشلت إضافة الماركة يرجى المحاولة مرة اخرى مع التأكد من حجم الصورة',
-          'فشل',
-        );
+        if (err.error.message.includes('The name has already been taken.')) {
+          this.toastr.error('هذه الماركة موجودة ب الفعل', 'فشل');
+        } else {
+          this.toastr.error(
+            'فشلت إضافة الماركة يرجى المحاولة مرة اخرى مع التأكد من حجم الصورة',
+            'فشل',
+          );
+        }
       },
     });
   }

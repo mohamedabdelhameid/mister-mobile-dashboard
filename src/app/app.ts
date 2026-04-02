@@ -9,5 +9,5 @@ import { NgxSpinnerComponent } from 'ngx-spinner';
   styleUrl: './app.css',
 })
 export class App {
-  protected readonly title = signal('luxa-dashboard');
+  protected readonly title = signal('mistermobile-dashboard');
 }

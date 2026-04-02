@@ -11,16 +11,16 @@
 
   <div class="relative z-10 w-full max-w-lg">
     <div class="flex items-center gap-3 mb-4">
-      <div class="flex-1 h-px bg-gradient-to-l from-[#D4AF37]/30 to-transparent"></div>
-      <span class="text-xs tracking-[0.3em] uppercase text-[#D4AF37] opacity-60"
-        >LUXA Dashboard</span
+      <div class="flex-1 h-px bg-gradient-to-l from-[#82c04f]/30 to-transparent"></div>
+      <span class="text-xs tracking-[0.3em] uppercase text-[#82c04f] opacity-60"
+        >Mister Mobile Dashboard</span
       >
-      <div class="flex-1 h-px bg-gradient-to-r from-[#D4AF37]/30 to-transparent"></div>
+      <div class="flex-1 h-px bg-gradient-to-r from-[#82c04f]/30 to-transparent"></div>
     </div>
 
     <div class="mb-8">
       <h1 class="text-3xl font-black text-white mb-1">
-        تعديل <span class="text-[#D4AF37]">ماركة</span>
+        تعديل <span class="text-[#82c04f]">ماركة</span>
       </h1>
       <p class="text-white/30 text-sm">تعديل بيانات الماركة الحالية</p>
     </div>
@@ -34,22 +34,22 @@
       "
     >
       <div
-        class="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#D4AF37]/25 rounded-tr-sm pointer-events-none"
+        class="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#82c04f]/25 rounded-tr-sm pointer-events-none"
       ></div>
       <div
-        class="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#D4AF37]/25 rounded-tl-sm pointer-events-none"
+        class="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#82c04f]/25 rounded-tl-sm pointer-events-none"
       ></div>
       <div
-        class="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-[#D4AF37]/25 rounded-br-sm pointer-events-none"
+        class="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-[#82c04f]/25 rounded-br-sm pointer-events-none"
       ></div>
       <div
-        class="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-[#D4AF37]/25 rounded-bl-sm pointer-events-none"
+        class="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-[#82c04f]/25 rounded-bl-sm pointer-events-none"
       ></div>
 
       <div class="flex flex-col gap-6">
         <form (submit)="updateBrand()" [formGroup]="updateBrandForm">
           <div class="flex flex-col gap-2">
-            <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase"
+            <label class="text-[10px] text-[#82c04f]/60 tracking-widest uppercase"
               >الصورة الحالية</label
             >
             <div class="flex items-center gap-4 bg-white/3 border border-white/8 rounded-xl p-4">
@@ -67,26 +67,26 @@
                 <p class="text-white/30 text-xs mt-0.5">{{ brand()?.slug }}</p>
               </div>
               <span
-                class="text-[10px] text-[#D4AF37] tracking-widest border border-[#D4AF37]/30 px-2 py-1 rounded-lg"
+                class="text-[10px] text-[#82c04f] tracking-widest border border-[#82c04f]/30 px-2 py-1 rounded-lg"
                 >حالية</span
               >
             </div>
           </div>
 
           <div class="flex flex-col gap-2">
-            <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase">
+            <label class="text-[10px] text-[#82c04f]/60 tracking-widest uppercase">
               تغيير الصورة
               <span class="normal-case text-white/20 tracking-normal mr-2">اختياري</span>
             </label>
             <div
-              class="relative flex flex-col items-center justify-center gap-3 border-2 border-dashed border-white/10 rounded-2xl p-6 cursor-pointer hover:border-[#D4AF37]/40 transition-colors duration-200 group bg-white/2"
+              class="relative flex flex-col items-center justify-center gap-3 border-2 border-dashed border-white/10 rounded-2xl p-6 cursor-pointer hover:border-[#82c04f]/40 transition-colors duration-200 group bg-white/2"
             >
               <div
                 class="w-12 h-12 rounded-xl flex items-center justify-center"
                 style="background: rgba(212, 175, 55, 0.1)"
               >
                 <i
-                  class="fa-solid fa-cloud-arrow-up text-[#D4AF37]/60 text-xl group-hover:text-[#D4AF37] transition-colors duration-200"
+                  class="fa-solid fa-cloud-arrow-up text-[#82c04f]/60 text-xl group-hover:text-[#82c04f] transition-colors duration-200"
                 ></i>
               </div>
               <div class="text-center">
@@ -103,7 +103,7 @@
           </div>
 
           <div class="flex flex-col gap-1.5 mb-3.5">
-            <label class="text-[10px] text-[#D4AF37]/60 tracking-widest uppercase"
+            <label class="text-[10px] text-[#82c04f]/60 tracking-widest uppercase"
               >اسم الماركة</label
             >
             <input
@@ -111,7 +111,7 @@
               [value]="brand()?.name"
               placeholder="مثال: Samsung"
               formControlName="name"
-              class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#D4AF37]/50 transition-colors duration-200"
+              class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:border-[#82c04f]/50 transition-colors duration-200"
             />
             @if (updateBrandForm.get('name')?.invalid && updateBrandForm.get('name')?.touched) {
               <p class="text-red-500 text-xs mt-1">
@@ -120,7 +120,7 @@
             }
           </div>
 
-          <div class="h-px bg-gradient-to-r from-transparent via-[#D4AF37]/15 to-transparent"></div>
+          <div class="h-px bg-gradient-to-r from-transparent via-[#82c04f]/15 to-transparent"></div>
 
           <div class="flex gap-3 mt-3.5">
             <a
@@ -133,7 +133,7 @@
               type="submit"
               class="relative flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm overflow-hidden cursor-pointer group"
               style="
-                background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 50%, #d4af37 100%);
+                background: linear-gradient(135deg, #82c04f 0%, #8ed256 50%, #82c04f 100%);
                 color: #0a0a0a;
               "
             >
@@ -145,7 +145,7 @@
               </span>
               <div
                 class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style="background: linear-gradient(135deg, #f0cc5c 0%, #d4af37 100%)"
+                style="background: linear-gradient(135deg, #8ed256 0%, #82c04f 100%)"
               ></div>
             </button>
           </div>

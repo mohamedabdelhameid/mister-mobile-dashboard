@@ -8,9 +8,11 @@
 
   <div class="relative z-10 max-w-7xl mx-auto">
     <div class="mb-8">
-      <p class="text-[#D4AF37]/50 text-[10px] tracking-[0.3em] uppercase mb-1">LUXA Dashboard</p>
+      <p class="text-[#82c04f]/50 text-[10px] tracking-[0.3em] uppercase mb-1">
+        Mister Mobile Dashboard
+      </p>
       <h1 class="text-3xl font-black text-white">
-        ألوان <span class="text-[#D4AF37]">الموبايلات</span>
+        ألوان <span class="text-[#82c04f]">الموبايلات</span>
       </h1>
     </div>
 
@@ -48,13 +50,13 @@
           class="w-20 h-20 rounded-2xl flex items-center justify-center"
           style="background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.15)"
         >
-          <i class="fa-solid fa-tag text-3xl text-[#D4AF37]/40"></i>
+          <i class="fa-solid fa-tag text-3xl text-[#82c04f]/40"></i>
         </div>
         <p class="text-white/30 text-lg font-semibold">لا توجد الوان للموبايلات بعد</p>
         <button
           (click)="router.navigate(['/dashboard/mobiles/colors/add'])"
           class="px-6 py-3 rounded-xl text-sm font-bold cursor-pointer"
-          style="background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 100%); color: #0a0a0a"
+          style="background: linear-gradient(135deg, #82c04f 0%, #8ed256 100%); color: #0a0a0a"
         >
           إضافة أول لون موبايل
         </button>
@@ -65,7 +67,7 @@
       <div class="flex flex-col gap-5">
         @for (mobile of mobiles(); track mobile.id) {
           <div
-            class="bg-white/3 border border-white/5 rounded-2xl overflow-hidden hover:border-[#D4AF37]/15 transition-colors duration-200"
+            class="bg-white/3 border border-white/5 rounded-2xl overflow-hidden hover:border-[#82c04f]/15 transition-colors duration-200"
           >
             <div class="flex items-center gap-4 px-5 py-4 border-b border-white/5">
               <div
@@ -80,7 +82,7 @@
               <div class="flex-1 min-w-0">
                 <h3 class="text-white font-bold text-sm truncate">{{ mobile.title }}</h3>
                 <div class="flex items-center gap-3 mt-0.5">
-                  <p class="text-[#D4AF37]/50 text-xs">{{ mobile.brand.name }}</p>
+                  <p class="text-[#82c04f]/50 text-xs">{{ mobile.brand.name }}</p>
                   <span class="text-white/10">•</span>
                   <p class="text-white/30 text-xs">{{ mobile.colors.length }} لون</p>
                 </div>
@@ -90,7 +92,7 @@
                 (click)="router.navigate(['/dashboard/mobiles/colors/add'])"
                 class="relative flex items-center gap-2 px-4 py-2 rounded-xl font-bold text-xs overflow-hidden cursor-pointer group flex-shrink-0"
                 style="
-                  background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 50%, #d4af37 100%);
+                  background: linear-gradient(135deg, #82c04f 0%, #8ed256 50%, #82c04f 100%);
                   color: #0a0a0a;
                 "
               >
@@ -102,7 +104,7 @@
                 </span>
                 <div
                   class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style="background: linear-gradient(135deg, #f0cc5c 0%, #d4af37 100%)"
+                  style="background: linear-gradient(135deg, #8ed256 0%, #82c04f 100%)"
                 ></div>
               </button>
             </div>
@@ -119,7 +121,7 @@
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
                   @for (colorItem of mobile.colors; track colorItem.id) {
                     <div
-                      class="group/c relative bg-white/3 border border-white/5 rounded-xl p-3 hover:border-[#D4AF37]/20 transition-all duration-200 overflow-hidden"
+                      class="group/c relative bg-white/3 border border-white/5 rounded-xl p-3 hover:border-[#82c04f]/20 transition-all duration-200 overflow-hidden"
                     >
                       <div
                         class="absolute top-2 left-2 flex gap-1 opacity-0 group-hover/c:opacity-100 transition-opacity duration-200 z-10"
@@ -128,7 +130,7 @@
                           (click)="
                             router.navigate(['/dashboard/mobiles/colors/update', colorItem.id])
                           "
-                          class="w-6 h-6 rounded-lg flex items-center justify-center bg-[#D4AF37]/20 text-[#D4AF37] hover:bg-[#D4AF37]/35 transition-colors duration-200 cursor-pointer"
+                          class="w-6 h-6 rounded-lg flex items-center justify-center bg-[#82c04f]/20 text-[#82c04f] hover:bg-[#82c04f]/35 transition-colors duration-200 cursor-pointer"
                         >
                           <i class="fa-solid fa-pen text-[10px]"></i>
                         </button>
@@ -163,12 +165,12 @@
                         <div class="flex items-center gap-1">
                           <span
                             class="w-1.5 h-1.5 rounded-full"
-                            [style.background]="colorItem.is_available ? '#D4AF37' : '#555'"
+                            [style.background]="colorItem.is_available ? '#82c04f' : '#555'"
                           >
                           </span>
                           <span
                             class="text-[10px]"
-                            [style.color]="colorItem.is_available ? '#D4AF37' : '#555'"
+                            [style.color]="colorItem.is_available ? '#82c04f' : '#555'"
                           >
                             {{ colorItem.stock_quantity }}
                           </span>
@@ -201,7 +203,7 @@
 
                       <button
                         (click)="router.navigate(['/dashboard/mobiles/images/', colorItem.id])"
-                        class="w-full flex items-center justify-center gap-1.5 mt-3 py-1.5 rounded-lg border border-dashed border-white/10 text-white/25 text-[10px] hover:border-[#D4AF37]/30 hover:text-[#D4AF37]/60 transition-all duration-200 cursor-pointer"
+                        class="w-full flex items-center justify-center gap-1.5 mt-3 py-1.5 rounded-lg border border-dashed border-white/10 text-white/25 text-[10px] hover:border-[#82c04f]/30 hover:text-[#82c04f]/60 transition-all duration-200 cursor-pointer"
                       >
                         <i class="fa-solid fa-plus text-[10px]"></i>
                         إضافة صور

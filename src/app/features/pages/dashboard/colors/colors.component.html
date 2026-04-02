@@ -9,16 +9,18 @@
   <div class="relative z-10 max-w-6xl mx-auto">
     <div class="flex items-center justify-between mb-8">
       <div>
-        <p class="text-[#D4AF37]/50 text-[10px] tracking-[0.3em] uppercase mb-1">LUXA Dashboard</p>
+        <p class="text-[#82c04f]/50 text-[10px] tracking-[0.3em] uppercase mb-1">
+          Mister Mobile Dashboard
+        </p>
         <h1 class="text-3xl font-black text-white">
-          إدارة <span class="text-[#D4AF37]">الألوان</span>
+          إدارة <span class="text-[#82c04f]">الألوان</span>
         </h1>
       </div>
       <button
         (click)="router.navigate(['dashboard/colors/add'])"
         class="relative flex items-center gap-2 px-5 py-3 rounded-xl font-bold text-sm overflow-hidden cursor-pointer group"
         style="
-          background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 50%, #d4af37 100%);
+          background: linear-gradient(135deg, #82c04f 0%, #8ed256 50%, #82c04f 100%);
           color: #0a0a0a;
         "
       >
@@ -28,7 +30,7 @@
         </span>
         <div
           class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          style="background: linear-gradient(135deg, #f0cc5c 0%, #d4af37 100%)"
+          style="background: linear-gradient(135deg, #8ed256 0%, #82c04f 100%)"
         ></div>
       </button>
     </div>
@@ -60,13 +62,13 @@
           class="w-20 h-20 rounded-2xl flex items-center justify-center"
           style="background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.15)"
         >
-          <i class="fa-solid fa-tag text-3xl text-[#D4AF37]/40"></i>
+          <i class="fa-solid fa-tag text-3xl text-[#82c04f]/40"></i>
         </div>
         <p class="text-white/30 text-lg font-semibold">لا توجد ألوان بعد</p>
         <button
           (click)="router.navigate(['/dashboard/colors/add'])"
           class="px-6 py-3 rounded-xl text-sm font-bold cursor-pointer"
-          style="background: linear-gradient(135deg, #d4af37 0%, #f0cc5c 100%); color: #0a0a0a"
+          style="background: linear-gradient(135deg, #82c04f 0%, #8ed256 100%); color: #0a0a0a"
         >
           إضافة أول لون
         </button>
@@ -75,18 +77,18 @@
 
     @if (colors().length > 0) {
       <div class="flex items-center gap-3 mb-5">
-        <span class="text-[#D4AF37] font-black text-xl">{{ colors().length }}</span>
+        <span class="text-[#82c04f] font-black text-xl">{{ colors().length }}</span>
         <span class="text-white/30 text-sm">لون مسجل</span>
-        <div class="flex-1 h-px bg-gradient-to-r from-[#D4AF37]/15 to-transparent"></div>
+        <div class="flex-1 h-px bg-gradient-to-r from-[#82c04f]/15 to-transparent"></div>
       </div>
 
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         @for (color of colors(); track color.id) {
           <div
-            class="group relative bg-white/3 border border-white/5 rounded-2xl p-5 flex flex-col items-center text-center hover:border-[#D4AF37]/25 transition-all duration-300 overflow-hidden"
+            class="group relative bg-white/3 border border-white/5 rounded-2xl p-5 flex flex-col items-center text-center hover:border-[#82c04f]/25 transition-all duration-300 overflow-hidden"
           >
             <div
-              class="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+              class="absolute inset-0 bg-gradient-to-br from-[#82c04f]/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
             ></div>
 
             <div
@@ -94,7 +96,7 @@
             >
               <button
                 (click)="router.navigate(['/dashboard/colors', color.id])"
-                class="w-7 h-7 rounded-lg flex items-center justify-center bg-[#D4AF37]/15 text-[#D4AF37] hover:bg-[#D4AF37]/30 transition-colors duration-200 cursor-pointer"
+                class="w-7 h-7 rounded-lg flex items-center justify-center bg-[#82c04f]/15 text-[#82c04f] hover:bg-[#82c04f]/30 transition-colors duration-200 cursor-pointer"
               >
                 <i class="fa-solid fa-pen text-xs"></i>
               </button>
@@ -118,7 +120,7 @@
             </div>
 
             <h3
-              class="text-white font-bold text-sm group-hover:text-[#D4AF37] transition-colors duration-200 truncate w-full"
+              class="text-white font-bold text-sm group-hover:text-[#82c04f] transition-colors duration-200 truncate w-full"
             >
               {{ color.name }}
             </h3>
