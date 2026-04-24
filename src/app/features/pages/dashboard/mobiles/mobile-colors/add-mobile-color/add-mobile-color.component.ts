@@ -7,7 +7,13 @@ import {
   IMobile,
 } from '../../../../../../core/interfaces/mobilesInterfaces/imobile.interfaces';
 import { IColor } from '../../../../../../core/interfaces/colorInterfaces/icolor.interfaces';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { NgClass } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
@@ -28,6 +34,27 @@ export class AddMobileColorComponent {
   authSubscription?: Subscription;
   private readonly fb = inject(FormBuilder);
   private router = inject(Router);
+  mobileSearch = new FormControl('');
+  showDropdown = false;
+  filteredMobiles = signal<IMobile[]>([]);
+
+  filterMobiles() {
+    const q = this.mobileSearch.value?.toLowerCase() ?? '';
+    this.addColorAndQuantityForm.patchValue({ mobile_id: '' });
+    this.filteredMobiles.set(
+      q ? this.mobiles().filter((m) => m.title.toLowerCase().includes(q)) : this.mobiles(),
+    );
+  }
+
+  selectMobile(mobile: IMobile) {
+    this.mobileSearch.setValue(mobile.title);
+    this.addColorAndQuantityForm.patchValue({ mobile_id: mobile.id });
+    this.showDropdown = false;
+  }
+
+  onBlur() {
+    setTimeout(() => (this.showDropdown = false), 150);
+  }
 
   ngOnInit() {
     this.initializeForm();

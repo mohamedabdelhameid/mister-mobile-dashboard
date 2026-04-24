@@ -129,7 +129,7 @@
               <div
                 class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border"
                 [ngClass]="{
-                  'bg-yellow-500/10 text-green-400 border-green-500/20':
+                  'bg-yellow-500/10 text-yellow-400 border-yellow-500/20':
                     order.payment_status === 'pending',
                   'bg-green-500/10 text-green-400 border-green-500/20':
                     order.payment_status === 'confirmed',
@@ -140,7 +140,7 @@
                 <span
                   class="w-1.5 h-1.5 rounded-full"
                   [ngClass]="{
-                    'bg-green-400 animate-pulse': order.payment_status === 'pending',
+                    'bg-yellow-400 animate-pulse': order.payment_status === 'pending',
                     'bg-green-400': order.payment_status === 'confirmed',
                     'bg-red-400': order.payment_status === 'rejected',
                   }"
@@ -198,7 +198,7 @@
                     class="w-12 h-12 rounded-xl bg-[#111] border border-white/8 overflow-hidden flex-shrink-0"
                   >
                     <img
-                      [src]="ApiLink.imageApiLink + item.product.image_cover"
+                      [src]="ApiLink.imageApiLink + item.product.image"
                       [alt]="item.product.title"
                       class="w-full h-full object-contain p-1"
                     />

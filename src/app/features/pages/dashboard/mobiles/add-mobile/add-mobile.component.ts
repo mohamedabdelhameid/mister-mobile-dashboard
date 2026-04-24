@@ -51,7 +51,7 @@ export class AddMobileComponent {
       operating_system: ['', Validators.required],
       camera: ['', Validators.required],
       network_support: ['', Validators.required], // 4G or 5G or else
-      release_year: ['', Validators.required],
+      release_year: ['2025', Validators.required],
       status: ['', Validators.required],
     });
   }
@@ -68,7 +68,7 @@ export class AddMobileComponent {
     const data = new FormData();
     data.append('title', this.addMobileForm.get('title')?.value || '');
     data.append('brand_id', this.addMobileForm.get('brand_id')?.value || '');
-    data.append('model_number', this.addMobileForm.get('model_number')?.value || '');
+    data.append('model_number', 'Mister Mobile Store');
     data.append('description', this.addMobileForm.get('description')?.value || '');
     data.append('battery', this.addMobileForm.get('battery')?.value || '');
     data.append('processor', this.addMobileForm.get('processor')?.value || '');
@@ -79,7 +79,7 @@ export class AddMobileComponent {
     data.append('operating_system', this.addMobileForm.get('operating_system')?.value || '');
     data.append('camera', this.addMobileForm.get('camera')?.value || '');
     data.append('network_support', this.addMobileForm.get('network_support')?.value || '');
-    data.append('release_year', this.addMobileForm.get('release_year')?.value || '');
+    data.append('release_year', '2025');
     data.append('status', this.addMobileForm.get('status')?.value || '');
     data.append('image_cover', this.file() || ({} as File));
 

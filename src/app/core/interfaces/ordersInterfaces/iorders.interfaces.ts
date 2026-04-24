@@ -44,6 +44,7 @@ export interface Product {
   status: string;
   product_type: string;
   image_cover: string;
+  image?: string;
   brand: Brand;
   model_number: string;
   battery: number;

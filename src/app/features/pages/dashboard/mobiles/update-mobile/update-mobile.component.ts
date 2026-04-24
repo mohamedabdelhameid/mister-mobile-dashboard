@@ -57,7 +57,7 @@ export class UpdateMobileComponent {
       operating_system: [this.mobile()?.operating_system, Validators.required],
       camera: [this.mobile()?.camera, Validators.required],
       network_support: [this.mobile()?.network_support, Validators.required], // 4G or 5G or else
-      release_year: [this.mobile()?.release_year, Validators.required],
+      release_year: ['2025', Validators.required],
       status: [this.mobile()?.status, Validators.required],
     });
   }
@@ -109,10 +109,7 @@ export class UpdateMobileComponent {
       'brand_id',
       this.updateMobileForm.get('brand_id')?.value || this.mobile()?.brand?.id,
     );
-    data.append(
-      'model_number',
-      this.updateMobileForm.get('model_number')?.value || this.mobile()?.model_number,
-    );
+    data.append('model_number', 'Mister Mobile Store');
     data.append(
       'description',
       this.updateMobileForm.get('description')?.value || this.mobile()?.description,
@@ -125,10 +122,9 @@ export class UpdateMobileComponent {
     data.append('storage', this.updateMobileForm.get('storage')?.value || this.mobile()?.storage);
     data.append('display', this.updateMobileForm.get('display')?.value || this.mobile()?.display);
     data.append('price', this.updateMobileForm.get('price')?.value || this.mobile()?.price);
-    data.append(
-      'discount',
-      this.updateMobileForm.get('discount')?.value || this.mobile()?.discount,
-    );
+    const discountValue = this.updateMobileForm.get('discount')?.value ?? this.mobile()?.discount;
+
+    data.append('discount', String(parseInt(discountValue || 0)));
     data.append(
       'operating_system',
       this.updateMobileForm.get('operating_system')?.value || this.mobile()?.operating_system,
@@ -138,10 +134,7 @@ export class UpdateMobileComponent {
       'network_support',
       this.updateMobileForm.get('network_support')?.value || this.mobile()?.network_support,
     );
-    data.append(
-      'release_year',
-      this.updateMobileForm.get('release_year')?.value || this.mobile()?.release_year,
-    );
+    data.append('release_year', '2025');
     data.append('status', this.updateMobileForm.get('status')?.value || this.mobile()?.status);
 
     if (this.file()) {
@@ -160,6 +153,8 @@ export class UpdateMobileComponent {
         this.router.navigate(['/dashboard/mobiles']);
       },
       error: (err) => {
+        console.log(err.error);
+
         this.toastr.error(
           'فشلت إضافة الموبايل يرجى المحاولة مرة اخرى مع التأكد من حجم الصورة',
           'فشل',
